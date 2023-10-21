@@ -91,7 +91,7 @@ namespace QuizletWindows.Forms.Library
             {
 
                 DataGridViewRow selectedRow = titleGridView.SelectedRows[0];
-                if (selectedRow.Cells["Describe"].Value == null)
+                if (selectedRow.Cells["Describe"].Value != null)
                 {
                     string cellValue = selectedRow.Cells["Describe"].Value.ToString();
                     return cellValue;
@@ -102,6 +102,7 @@ namespace QuizletWindows.Forms.Library
 
         private void btnBarEdit_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
+            if (titleGridView.SelectedRows.Count == 0) { return; }
             int titleId = GetTitleId();
             string titleName = GetTitleName();
             string describe = GetDescribe();
@@ -114,6 +115,7 @@ namespace QuizletWindows.Forms.Library
 
         private async void btnBarDelete_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
+            if (titleGridView.SelectedRows.Count == 0) { return; }
             DialogResult result = Notification.ShowDeleteWarning("Are your sure about deleting this title permanently");
             if(result==DialogResult.OK)
             {
@@ -127,7 +129,10 @@ namespace QuizletWindows.Forms.Library
 
         private void btnBarModules_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
+            if (titleGridView.SelectedRows.Count == 0) { return; }
             FrmYourModules.TitleId = GetTitleId();
+            FrmYourModules.TitleName = GetTitleName();
+            FrmYourModules.DescribeTitle = GetDescribe();
             Program.mainMenu.ShowForm(typeof(FrmYourModules));
             this.Close();
         }

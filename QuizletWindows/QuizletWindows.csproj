@@ -206,11 +206,23 @@
     <Compile Include="Forms\Library\FrmAddLearningModule.Designer.cs">
       <DependentUpon>FrmAddLearningModule.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\Library\FrmAddTerm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Library\FrmAddTerm.Designer.cs">
+      <DependentUpon>FrmAddTerm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\Library\FrmEditLearningModule.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Forms\Library\FrmEditLearningModule.Designer.cs">
       <DependentUpon>FrmEditLearningModule.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Library\FrmEditTerm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Library\FrmEditTerm.Designer.cs">
+      <DependentUpon>FrmEditTerm.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\Library\FrmEditTitle.cs">
       <SubType>Form</SubType>
@@ -223,6 +235,12 @@
     </Compile>
     <Compile Include="Forms\Library\FrmAddTitle.Designer.cs">
       <DependentUpon>FrmAddTitle.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Library\FrmTerms.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Library\FrmTerms.Designer.cs">
+      <DependentUpon>FrmTerms.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\Library\FrmYourLibrary.cs">
       <SubType>Form</SubType>
@@ -240,6 +258,7 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ViewModels\Terminologies\LearningModuleViewModel.cs" />
+    <Compile Include="ViewModels\Terminologies\TermViewModel.cs" />
     <Compile Include="ViewModels\Terminologies\TitleViewModel.cs" />
     <Compile Include="ViewModels\User\UserViewModel.cs" />
     <EmbeddedResource Include="Forms\FrmLogin.resx">
@@ -251,14 +270,23 @@
     <EmbeddedResource Include="Forms\Library\FrmAddLearningModule.resx">
       <DependentUpon>FrmAddLearningModule.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Library\FrmAddTerm.resx">
+      <DependentUpon>FrmAddTerm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\Library\FrmEditLearningModule.resx">
       <DependentUpon>FrmEditLearningModule.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Library\FrmEditTerm.resx">
+      <DependentUpon>FrmEditTerm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Library\FrmEditTitle.resx">
       <DependentUpon>FrmEditTitle.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Library\FrmAddTitle.resx">
       <DependentUpon>FrmAddTitle.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Library\FrmTerms.resx">
+      <DependentUpon>FrmTerms.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Library\FrmYourLibrary.resx">
       <DependentUpon>FrmYourLibrary.cs</DependentUpon>

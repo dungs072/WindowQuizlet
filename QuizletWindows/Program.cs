@@ -33,7 +33,6 @@ namespace QuizletWindows
             if (fLogin.ShowDialog() == DialogResult.OK)
             {
                 mainMenu = new FrmMainMenu();
-                mainMenu.Show();
                 Application.Run(mainMenu);
             }
             else

@@ -1,4 +1,5 @@
-﻿using QuizletWindows.ViewModels.Terminologies;
+﻿using DevExpress.XtraReports.Parameters.ViewModels;
+using QuizletWindows.ViewModels.Terminologies;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -91,6 +92,45 @@ namespace QuizletWindows.API
         public async Task<bool> UpdateLearningModule(LearningModuleViewModel2 learningModuleViewModel)
         {
             HttpResponseMessage response = await client.PutAsJsonAsync<LearningModuleViewModel2>(Api.LearningModuleUrl, learningModuleViewModel);
+            if (response.StatusCode == HttpStatusCode.BadRequest)
+            {
+                return false;
+            }
+            return true;
+        }
+        #endregion
+
+        #region Terminology
+        public List<TermViewModel> GetTermByLearningModuleId(int learningModuleId)
+        {
+            return client.GetFromJsonAsync<List<TermViewModel>>(Api.TermUrl + $"/{learningModuleId}").Result;
+        }
+        public async Task<bool> CreateTerm(TermViewModel termViewModel)
+        {
+            HttpResponseMessage response = await client.PostAsJsonAsync<TermViewModel>(Api.TermUrl, termViewModel);
+            if (response.StatusCode == HttpStatusCode.BadRequest)
+            {
+                return false;
+            }
+            else
+            {
+                return true;
+            }
+
+        }
+        public async Task<bool> DeleteTerm(int termId)
+        {
+            HttpResponseMessage response = await client.DeleteAsync(Api.TermUrl + $"/{termId}");
+            if (response.StatusCode == HttpStatusCode.BadRequest)
+            {
+                return false;
+            }
+            return true;
+        }
+
+        public async Task<bool> UpdateTerm(TermViewModel termViewModel)
+        {
+            HttpResponseMessage response = await client.PutAsJsonAsync<TermViewModel>(Api.TermUrl, termViewModel);
             if (response.StatusCode == HttpStatusCode.BadRequest)
             {
                 return false;

@@ -45,6 +45,10 @@ namespace QuizletWindows
                 {
                     f=new FrmYourModules();
                 }
+                else if(tForm==typeof(FrmTerms))
+                {
+                    f = new FrmTerms();
+                }
                 else
                 {
                     f = new FrmLogin();

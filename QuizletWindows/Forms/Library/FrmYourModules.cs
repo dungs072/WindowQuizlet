@@ -18,13 +18,20 @@ namespace QuizletWindows.Forms.Library
     {
         private List<LearningModuleViewModel2> modules;
         public static int TitleId { get; set; }
+        public static string TitleName { get; set; }
+        public static string DescribeTitle { get; set; }
         public FrmYourModules()
         {
             InitializeComponent();
             FrmAddLearningModule.OnCreated += FetchDataTable;
             FrmEditLearningModule.OnUpdated += FetchDataTable;
+            
+        }
+        private void FrmYourModules_Load(object sender, EventArgs e)
+        {
             FetchDataTable();
             InitialSetUp();
+            TitleNameLabel.Text = TitleName + " - " + DescribeTitle;
         }
         private void FetchDataTable()
         {
@@ -73,7 +80,7 @@ namespace QuizletWindows.Forms.Library
             {
 
                 DataGridViewRow selectedRow = ModuleGridView.SelectedRows[0];
-                if (selectedRow.Cells["Describe"].Value==null)// bug there have to fix
+                if (selectedRow.Cells["Describe"].Value!=null)
                 {
                     string cellValue = selectedRow.Cells["Describe"].Value.ToString();
                     return cellValue;
@@ -82,7 +89,6 @@ namespace QuizletWindows.Forms.Library
             }
             return "";
         }
-
         private void btnBarBack_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             this.Close();
@@ -99,6 +105,7 @@ namespace QuizletWindows.Forms.Library
 
         private void btnBarEdit_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
+            if (ModuleGridView.SelectedRows.Count == 0) { return; }
             int moduleId = GetModuleId();
             string moduleName = GetModuleName();
             string describe = GetDescribe();
@@ -111,6 +118,7 @@ namespace QuizletWindows.Forms.Library
 
         private async void btnBarDelete_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
+            if (ModuleGridView.SelectedRows.Count == 0) { return; }
             DialogResult result = Notification.ShowDeleteWarning("Are your sure about deleting this module permanently");
             if (result == DialogResult.OK)
             {
@@ -129,5 +137,18 @@ namespace QuizletWindows.Forms.Library
             }
 
         }
+
+        private void btnBarTerm_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            FrmTerms.TitleId = TitleId;
+            FrmTerms.ModuleId = GetModuleId();
+            FrmTerms.ModuleNameDisplay = GetModuleName();
+            FrmTerms.DescribeNameDisplay = GetDescribe();
+            this.Close();
+            Program.mainMenu.ShowForm(typeof(FrmTerms));
+            
+        }
+
+      
     }
 }
