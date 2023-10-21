@@ -186,8 +186,27 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="API\Api.cs" />
+    <Compile Include="API\ClassApi.cs" />
     <Compile Include="API\TerminologyApi.cs" />
     <Compile Include="API\UserApi.cs" />
+    <Compile Include="Forms\Class\FrmAddYourOwnClass.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Class\FrmAddYourOwnClass.Designer.cs">
+      <DependentUpon>FrmAddYourOwnClass.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Class\FrmEditYourOwnClass.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Class\FrmEditYourOwnClass.Designer.cs">
+      <DependentUpon>FrmEditYourOwnClass.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Class\FrmYourOwnClass.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Class\FrmYourOwnClass.Designer.cs">
+      <DependentUpon>FrmYourOwnClass.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\FrmLogin.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -254,13 +273,30 @@
     <Compile Include="Forms\Library\FrmYourModules.Designer.cs">
       <DependentUpon>FrmYourModules.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\Library\Objective\FrmObjectivePractice.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Library\Objective\FrmObjectivePractice.Designer.cs">
+      <DependentUpon>FrmObjectivePractice.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\Notification.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ViewModels\Classes\ClassViewModel.cs" />
     <Compile Include="ViewModels\Terminologies\LearningModuleViewModel.cs" />
+    <Compile Include="ViewModels\Terminologies\ObjectivePack.cs" />
     <Compile Include="ViewModels\Terminologies\TermViewModel.cs" />
     <Compile Include="ViewModels\Terminologies\TitleViewModel.cs" />
     <Compile Include="ViewModels\User\UserViewModel.cs" />
+    <EmbeddedResource Include="Forms\Class\FrmAddYourOwnClass.resx">
+      <DependentUpon>FrmAddYourOwnClass.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Class\FrmEditYourOwnClass.resx">
+      <DependentUpon>FrmEditYourOwnClass.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Class\FrmYourOwnClass.resx">
+      <DependentUpon>FrmYourOwnClass.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\FrmLogin.resx">
       <DependentUpon>FrmLogin.cs</DependentUpon>
     </EmbeddedResource>
@@ -293,6 +329,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Library\FrmYourModules.resx">
       <DependentUpon>FrmYourModules.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Library\Objective\FrmObjectivePractice.resx">
+      <DependentUpon>FrmObjectivePractice.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\licenses.licx" />
     <EmbeddedResource Include="Properties\Resources.resx">

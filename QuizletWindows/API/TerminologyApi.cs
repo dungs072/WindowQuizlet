@@ -138,5 +138,12 @@ namespace QuizletWindows.API
             return true;
         }
         #endregion
+
+        #region Practice_Test
+        public List<ObjectivePack> GetObjectivePacks(int learningModuleId)
+        {
+            return client.GetFromJsonAsync<List<ObjectivePack>>(Api.TermUrlObjective + $"{learningModuleId}").Result;
+        }
+        #endregion
     }
 }

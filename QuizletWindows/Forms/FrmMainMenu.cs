@@ -1,6 +1,8 @@
 ﻿using DevExpress.XtraEditors;
 using QuizletWindows.Forms;
+using QuizletWindows.Forms.Class;
 using QuizletWindows.Forms.Library;
+using QuizletWindows.Forms.Library.Objective;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -26,7 +28,13 @@ namespace QuizletWindows
 
         private void btnBarLibrary_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
+            CloseAllChildrenForm();
             ShowForm(typeof(FrmYourLibrary));
+        }
+        private void btnBarYourOwnClass_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            CloseAllChildrenForm();
+            ShowForm(typeof(FrmYourOwnClass));
         }
 
 
@@ -49,6 +57,14 @@ namespace QuizletWindows
                 {
                     f = new FrmTerms();
                 }
+                else if(tForm==typeof(FrmObjectivePractice))
+                {
+                    f = new FrmObjectivePractice();
+                }
+                else if(tForm==typeof(FrmYourOwnClass))
+                {
+                    f = new FrmYourOwnClass();
+                }
                 else
                 {
                     f = new FrmLogin();
@@ -69,15 +85,26 @@ namespace QuizletWindows
             }
             return null;
         }
-
-        private void btnBarCreateNewTitle_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        private void CloseAllChildrenForm()
         {
-            foreach(var form in this.MdiChildren)
+            foreach (var form in this.MdiChildren)
             {
                 form.Close();
             }
+        }
+
+        private void btnBarCreateNewTitle_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            CloseAllChildrenForm();
             FrmAddTitle frmAddTitle = new FrmAddTitle();
             frmAddTitle.Show();
+        }
+
+        private void btnBarCreateNewClass_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            CloseAllChildrenForm();
+            FrmAddYourOwnClass frmAddClass = new FrmAddYourOwnClass();
+            frmAddClass.Show();
         }
     }
 }

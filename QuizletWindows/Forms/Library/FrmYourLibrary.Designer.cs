@@ -175,7 +175,7 @@
             this.titleGridView.Name = "titleGridView";
             this.titleGridView.ReadOnly = true;
             this.titleGridView.RowHeadersWidth = 62;
-            this.titleGridView.RowTemplate.Height = 28;
+            this.titleGridView.RowTemplate.Height = 50;
             this.titleGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.titleGridView.Size = new System.Drawing.Size(1012, 389);
             this.titleGridView.TabIndex = 10;

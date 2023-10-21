@@ -205,7 +205,7 @@
             this.termGridView.MultiSelect = false;
             this.termGridView.Name = "termGridView";
             this.termGridView.RowHeadersWidth = 62;
-            this.termGridView.RowTemplate.Height = 28;
+            this.termGridView.RowTemplate.Height = 50;
             this.termGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.termGridView.Size = new System.Drawing.Size(1096, 321);
             this.termGridView.TabIndex = 5;

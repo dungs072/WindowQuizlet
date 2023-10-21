@@ -53,7 +53,7 @@
             // 
             this.ribbonControl1.CaptionBarItemLinks.Add(this.btnBarUserInfor);
             this.ribbonControl1.CaptionBarItemLinks.Add(this.barSubItem1);
-            this.ribbonControl1.EmptyAreaImageOptions.ImagePadding = new System.Windows.Forms.Padding(45, 44, 45, 44);
+            this.ribbonControl1.EmptyAreaImageOptions.ImagePadding = new System.Windows.Forms.Padding(67, 66, 67, 66);
             this.ribbonControl1.ExpandCollapseItem.Id = 0;
             this.ribbonControl1.Items.AddRange(new DevExpress.XtraBars.BarItem[] {
             this.btnBarUserInfor,
@@ -67,10 +67,10 @@
             this.btnBarCreateNewTitle,
             this.btnBarCreateNewClass});
             this.ribbonControl1.Location = new System.Drawing.Point(0, 0);
-            this.ribbonControl1.Margin = new System.Windows.Forms.Padding(4);
+            this.ribbonControl1.Margin = new System.Windows.Forms.Padding(6);
             this.ribbonControl1.MaxItemId = 12;
             this.ribbonControl1.Name = "ribbonControl1";
-            this.ribbonControl1.OptionsMenuMinWidth = 495;
+            this.ribbonControl1.OptionsMenuMinWidth = 742;
             this.ribbonControl1.Pages.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPage[] {
             this.ribbonPage1});
             this.ribbonControl1.Size = new System.Drawing.Size(1137, 231);
@@ -109,6 +109,7 @@
             this.btnBarCreateNewClass.Id = 11;
             this.btnBarCreateNewClass.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("btnBarCreateNewClass.ImageOptions.SvgImage")));
             this.btnBarCreateNewClass.Name = "btnBarCreateNewClass";
+            this.btnBarCreateNewClass.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnBarCreateNewClass_ItemClick);
             // 
             // btnBarStatistics
             // 
@@ -134,6 +135,7 @@
             this.btnBarYourOwnClass.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnBarYourOwnClass.ImageOptions.Image")));
             this.btnBarYourOwnClass.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("btnBarYourOwnClass.ImageOptions.LargeImage")));
             this.btnBarYourOwnClass.Name = "btnBarYourOwnClass";
+            this.btnBarYourOwnClass.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnBarYourOwnClass_ItemClick);
             // 
             // btnBarJoiningClass
             // 

@@ -1,6 +1,7 @@
 ﻿using DevExpress.XtraBars.Docking2010.Views.WindowsUI;
 using DevExpress.XtraEditors;
 using QuizletWindows.API;
+using QuizletWindows.Forms.Library.Objective;
 using QuizletWindows.ViewModels.Terminologies;
 using System;
 using System.Collections.Generic;
@@ -133,7 +134,9 @@ namespace QuizletWindows.Forms.Library
 
         private void btnBarPractice_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-
+            FrmObjectivePractice.LearningModuleId = ModuleId;
+            this.Close();
+            Program.mainMenu.ShowForm(typeof(FrmObjectivePractice));
         }
 
         private void btnBarTest_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
