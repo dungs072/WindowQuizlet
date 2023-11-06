@@ -136,5 +136,23 @@ namespace QuizletWindows.Forms.Library
             Program.mainMenu.ShowForm(typeof(FrmYourModules));
             this.Close();
         }
+
+        private void txtSearch_TextChanged(object sender, EventArgs e)
+        {
+            string searchText = txtSearch.Text.Trim().ToLower();
+            titleGridView.ClearSelection();
+
+            foreach (DataGridViewRow row in titleGridView.Rows)
+            {
+                foreach (DataGridViewCell cell in row.Cells)
+                {
+                    if (cell.Value != null && cell.Value.ToString().ToLower().Contains(searchText))
+                    {
+                        row.Selected = true;
+                        break; // Break to select the row once.
+                    }
+                }
+            }
+        }
     }
 }

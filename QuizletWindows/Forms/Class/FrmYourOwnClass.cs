@@ -139,7 +139,9 @@ namespace QuizletWindows.Forms.Class
 
         private void btnBarGoto_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-
+            FrmClassDetail.classId = GetClassId();
+            Program.mainMenu.CloseAllChildrenForm();
+            Program.mainMenu.ShowForm(typeof(FrmClassDetail));
         }
 
         private void classGridView_DataBindingComplete(object sender, DataGridViewBindingCompleteEventArgs e)

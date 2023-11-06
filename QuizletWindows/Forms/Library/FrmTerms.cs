@@ -134,6 +134,7 @@ namespace QuizletWindows.Forms.Library
 
         private void btnBarPractice_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
+            if (terms.Count <=4) { return; }
             FrmObjectivePractice.LearningModuleId = ModuleId;
             this.Close();
             Program.mainMenu.ShowForm(typeof(FrmObjectivePractice));

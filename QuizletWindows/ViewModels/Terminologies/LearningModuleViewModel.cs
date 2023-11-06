@@ -13,4 +13,12 @@ namespace QuizletWindows.ViewModels.Terminologies
 
         public TitleViewModel TitleView { get; set; }
     }
+    public class LearningModuleViewModel
+    {
+        public int LearningModuleId { get; set; }
+        public string LearningModuleName { get; set; }
+        public string Describe { get; set; }
+        public int TitleId { get; set; }
+        public bool IsChoose { get; set; }
+    }
 }

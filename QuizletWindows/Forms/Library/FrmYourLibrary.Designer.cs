@@ -55,6 +55,8 @@
             this.barDockControl2 = new DevExpress.XtraBars.BarDockControl();
             this.barDockControl3 = new DevExpress.XtraBars.BarDockControl();
             this.barDockControl4 = new DevExpress.XtraBars.BarDockControl();
+            this.txtSearch = new System.Windows.Forms.TextBox();
+            this.label2 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.titleGridView)).BeginInit();
@@ -132,6 +134,8 @@
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.label2);
+            this.panel1.Controls.Add(this.txtSearch);
             this.panel1.Controls.Add(this.label1);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 34);
@@ -307,6 +311,23 @@
             this.barDockControl4.Manager = this.barManager2;
             this.barDockControl4.Size = new System.Drawing.Size(0, 457);
             // 
+            // txtSearch
+            // 
+            this.txtSearch.Location = new System.Drawing.Point(96, 22);
+            this.txtSearch.Name = "txtSearch";
+            this.txtSearch.Size = new System.Drawing.Size(304, 27);
+            this.txtSearch.TabIndex = 1;
+            this.txtSearch.TextChanged += new System.EventHandler(this.txtSearch_TextChanged);
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(28, 25);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(62, 19);
+            this.label2.TabIndex = 2;
+            this.label2.Text = "Search:";
+            // 
             // FrmYourLibrary
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 19F);
@@ -364,5 +385,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn TitleId;
         private System.Windows.Forms.DataGridViewTextBoxColumn TitleName;
         private System.Windows.Forms.DataGridViewTextBoxColumn Describe;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.TextBox txtSearch;
     }
 }

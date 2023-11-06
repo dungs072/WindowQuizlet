@@ -68,7 +68,7 @@
             this.btnBarCreateNewClass});
             this.ribbonControl1.Location = new System.Drawing.Point(0, 0);
             this.ribbonControl1.Margin = new System.Windows.Forms.Padding(6);
-            this.ribbonControl1.MaxItemId = 12;
+            this.ribbonControl1.MaxItemId = 14;
             this.ribbonControl1.Name = "ribbonControl1";
             this.ribbonControl1.OptionsMenuMinWidth = 742;
             this.ribbonControl1.Pages.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPage[] {
@@ -143,6 +143,7 @@
             this.btnBarJoiningClass.Id = 5;
             this.btnBarJoiningClass.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("btnBarJoiningClass.ImageOptions.SvgImage")));
             this.btnBarJoiningClass.Name = "btnBarJoiningClass";
+            this.btnBarJoiningClass.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnBarJoiningClass_ItemClick);
             // 
             // barButtonItem1
             // 

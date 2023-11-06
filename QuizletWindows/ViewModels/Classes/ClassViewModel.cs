@@ -21,4 +21,38 @@ namespace QuizletWindows.ViewModels.Classes
 
         public string CastFormatCreatedDate { get { return CreatedDate.ToString("dd/MM/yyyy"); } }
     }
+
+    public class ClassLearningModuleViewModel
+    {
+        public int LearningModuleId { get; set; }
+        public string LearningModuleName { get; set; }
+        public string Describe { get; set; }
+        public DateTime AddedDate { get; set; }
+        public int NumberTerms { get; set; }
+        public string CastFormatCreatedDate { get { return AddedDate.ToString("dd/MM/yyyy"); } }
+    }
+    public class UserParticipant
+    {
+        public int UserId { get; set; }
+        public string FirstName { get; set; }
+        public string LastName { get; set; }
+        public string Gmail { get; set; }
+        public DateTime RegisterDate { get; set; }
+        public string CastFormatCreatedDate { get { return RegisterDate.ToString("dd/MM/yyyy"); } }
+    }
+    public class LearningModuleDetail
+    {
+        public int LearningModuleDetailId { get; set; }
+        public int ClassId { get; set; }
+        public int LearningModuleId { get; set; }
+        public DateTime CreatedDate { get; set; }
+    }
+    public class RegisterDetailClass
+    {
+        public int RegisterDetailClassId { get; set; }
+        public int UserId { get; set; }
+        public int ClassId { get; set; }
+        public DateTime RegisterDate { get; set; }
+        public bool IsAccepted { get; set; }
+    }
 }

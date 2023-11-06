@@ -65,6 +65,18 @@ namespace QuizletWindows
                 {
                     f = new FrmYourOwnClass();
                 }
+                else if(tForm==typeof(FrmRegisterJoiningClass))
+                {
+                    f = new FrmRegisterJoiningClass();
+                }
+                else if(tForm==typeof(FrmClassDetail))
+                {
+                    f = new FrmClassDetail();
+                }
+                else if(tForm==typeof(FrmJoiningClass))
+                {
+                    f = new FrmJoiningClass();
+                }
                 else
                 {
                     f = new FrmLogin();
@@ -85,7 +97,7 @@ namespace QuizletWindows
             }
             return null;
         }
-        private void CloseAllChildrenForm()
+        public void CloseAllChildrenForm()
         {
             foreach (var form in this.MdiChildren)
             {
@@ -105,6 +117,12 @@ namespace QuizletWindows
             CloseAllChildrenForm();
             FrmAddYourOwnClass frmAddClass = new FrmAddYourOwnClass();
             frmAddClass.Show();
+        }
+
+        private void btnBarJoiningClass_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            CloseAllChildrenForm();
+            ShowForm(typeof(FrmJoiningClass));
         }
     }
 }

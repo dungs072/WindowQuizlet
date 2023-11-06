@@ -195,11 +195,47 @@
     <Compile Include="Forms\Class\FrmAddYourOwnClass.Designer.cs">
       <DependentUpon>FrmAddYourOwnClass.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\Class\FrmClassDetail.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Class\FrmClassDetail.Designer.cs">
+      <DependentUpon>FrmClassDetail.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Class\FrmClassDetailChooseModule.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Class\FrmClassDetailChooseModule.Designer.cs">
+      <DependentUpon>FrmClassDetailChooseModule.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Class\FrmClassDetailChooseParticipant.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Class\FrmClassDetailChooseParticipant.Designer.cs">
+      <DependentUpon>FrmClassDetailChooseParticipant.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Class\FrmClassDetailChooseTitle.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Class\FrmClassDetailChooseTitle.Designer.cs">
+      <DependentUpon>FrmClassDetailChooseTitle.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\Class\FrmEditYourOwnClass.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Forms\Class\FrmEditYourOwnClass.Designer.cs">
       <DependentUpon>FrmEditYourOwnClass.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Class\FrmJoiningClass.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Class\FrmJoiningClass.Designer.cs">
+      <DependentUpon>FrmJoiningClass.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Class\FrmRegisterJoiningClass.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Class\FrmRegisterJoiningClass.Designer.cs">
+      <DependentUpon>FrmRegisterJoiningClass.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\Class\FrmYourOwnClass.cs">
       <SubType>Form</SubType>
@@ -283,6 +319,7 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ViewModels\Classes\ClassViewModel.cs" />
+    <Compile Include="ViewModels\Classes\RegisterClass.cs" />
     <Compile Include="ViewModels\Terminologies\LearningModuleViewModel.cs" />
     <Compile Include="ViewModels\Terminologies\ObjectivePack.cs" />
     <Compile Include="ViewModels\Terminologies\TermViewModel.cs" />
@@ -291,8 +328,26 @@
     <EmbeddedResource Include="Forms\Class\FrmAddYourOwnClass.resx">
       <DependentUpon>FrmAddYourOwnClass.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Class\FrmClassDetail.resx">
+      <DependentUpon>FrmClassDetail.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Class\FrmClassDetailChooseModule.resx">
+      <DependentUpon>FrmClassDetailChooseModule.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Class\FrmClassDetailChooseParticipant.resx">
+      <DependentUpon>FrmClassDetailChooseParticipant.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Class\FrmClassDetailChooseTitle.resx">
+      <DependentUpon>FrmClassDetailChooseTitle.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\Class\FrmEditYourOwnClass.resx">
       <DependentUpon>FrmEditYourOwnClass.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Class\FrmJoiningClass.resx">
+      <DependentUpon>FrmJoiningClass.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Class\FrmRegisterJoiningClass.resx">
+      <DependentUpon>FrmRegisterJoiningClass.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Class\FrmYourOwnClass.resx">
       <DependentUpon>FrmYourOwnClass.cs</DependentUpon>
