@@ -34,11 +34,13 @@
             this.barSubItem1 = new DevExpress.XtraBars.BarSubItem();
             this.btnBarCreateNewTitle = new DevExpress.XtraBars.BarButtonItem();
             this.btnBarCreateNewClass = new DevExpress.XtraBars.BarButtonItem();
+            this.btnBarLogOut = new DevExpress.XtraBars.BarButtonItem();
             this.btnBarStatistics = new DevExpress.XtraBars.BarButtonItem();
             this.btnBarLibrary = new DevExpress.XtraBars.BarButtonItem();
             this.btnBarYourOwnClass = new DevExpress.XtraBars.BarButtonItem();
             this.btnBarJoiningClass = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItem1 = new DevExpress.XtraBars.BarButtonItem();
+            this.btnBarAchievement = new DevExpress.XtraBars.BarButtonItem();
             this.ribbonPage1 = new DevExpress.XtraBars.Ribbon.RibbonPage();
             this.ribbonPageGroup1 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonPageGroup2 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
@@ -65,10 +67,12 @@
             this.btnBarJoiningClass,
             this.barButtonItem1,
             this.btnBarCreateNewTitle,
-            this.btnBarCreateNewClass});
+            this.btnBarCreateNewClass,
+            this.btnBarLogOut,
+            this.btnBarAchievement});
             this.ribbonControl1.Location = new System.Drawing.Point(0, 0);
             this.ribbonControl1.Margin = new System.Windows.Forms.Padding(6);
-            this.ribbonControl1.MaxItemId = 14;
+            this.ribbonControl1.MaxItemId = 16;
             this.ribbonControl1.Name = "ribbonControl1";
             this.ribbonControl1.OptionsMenuMinWidth = 742;
             this.ribbonControl1.Pages.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPage[] {
@@ -91,7 +95,8 @@
             this.barSubItem1.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("barSubItem1.ImageOptions.LargeImage")));
             this.barSubItem1.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
             new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.btnBarCreateNewTitle, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph),
-            new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.btnBarCreateNewClass, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph)});
+            new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.btnBarCreateNewClass, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph),
+            new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.btnBarLogOut, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph)});
             this.barSubItem1.Name = "barSubItem1";
             // 
             // btnBarCreateNewTitle
@@ -111,6 +116,14 @@
             this.btnBarCreateNewClass.Name = "btnBarCreateNewClass";
             this.btnBarCreateNewClass.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnBarCreateNewClass_ItemClick);
             // 
+            // btnBarLogOut
+            // 
+            this.btnBarLogOut.Caption = "Log out";
+            this.btnBarLogOut.Id = 14;
+            this.btnBarLogOut.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("btnBarLogOut.ImageOptions.SvgImage")));
+            this.btnBarLogOut.Name = "btnBarLogOut";
+            this.btnBarLogOut.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnBarLogOut_ItemClick);
+            // 
             // btnBarStatistics
             // 
             this.btnBarStatistics.Caption = "Statistics";
@@ -118,6 +131,7 @@
             this.btnBarStatistics.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnBarStatistics.ImageOptions.Image")));
             this.btnBarStatistics.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("btnBarStatistics.ImageOptions.LargeImage")));
             this.btnBarStatistics.Name = "btnBarStatistics";
+            this.btnBarStatistics.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnBarStatistics_ItemClick);
             // 
             // btnBarLibrary
             // 
@@ -151,6 +165,14 @@
             this.barButtonItem1.Id = 6;
             this.barButtonItem1.Name = "barButtonItem1";
             // 
+            // btnBarAchievement
+            // 
+            this.btnBarAchievement.Caption = "Achievement";
+            this.btnBarAchievement.Id = 15;
+            this.btnBarAchievement.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("btnBarAchievement.ImageOptions.SvgImage")));
+            this.btnBarAchievement.Name = "btnBarAchievement";
+            this.btnBarAchievement.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnBarAchievement_ItemClick);
+            // 
             // ribbonPage1
             // 
             this.ribbonPage1.Groups.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPageGroup[] {
@@ -162,6 +184,7 @@
             // ribbonPageGroup1
             // 
             this.ribbonPageGroup1.ItemLinks.Add(this.btnBarStatistics);
+            this.ribbonPageGroup1.ItemLinks.Add(this.btnBarAchievement);
             this.ribbonPageGroup1.ItemLinks.Add(this.btnBarLibrary);
             this.ribbonPageGroup1.Name = "ribbonPageGroup1";
             this.ribbonPageGroup1.Text = "Your";
@@ -238,6 +261,8 @@
         private DevExpress.XtraBars.BarSubItem barSubItem1;
         private DevExpress.XtraBars.BarButtonItem btnBarCreateNewTitle;
         private DevExpress.XtraBars.BarButtonItem btnBarCreateNewClass;
+        private DevExpress.XtraBars.BarButtonItem btnBarLogOut;
+        private DevExpress.XtraBars.BarButtonItem btnBarAchievement;
     }
 }
 

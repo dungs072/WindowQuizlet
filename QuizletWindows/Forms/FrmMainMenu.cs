@@ -1,16 +1,14 @@
 ﻿using DevExpress.XtraEditors;
+using QuizletWindows.API;
 using QuizletWindows.Forms;
 using QuizletWindows.Forms.Class;
 using QuizletWindows.Forms.Library;
 using QuizletWindows.Forms.Library.Objective;
+using QuizletWindows.Forms.Statistics;
+using QuizletWindows.ViewModels;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
 using System.Windows.Forms;
+using static DevExpress.XtraEditors.Mask.MaskSettings;
 
 namespace QuizletWindows
 {
@@ -22,8 +20,19 @@ namespace QuizletWindows
         }
         private void FrmMainMenu_Load(object sender, EventArgs e)
         {
+            FirstLoad();
+        }
+        private void FirstLoad()
+        {
             tsNameUser.Text = Program.UserName;
             tsTypeUser.Text = Program.TypeUser;
+            MarkAttendance mark = new MarkAttendance();
+            mark.UserId = Program.UserId;
+            bool canMark =  AchivementApi.Instance.MarkAttendance(mark);
+            if (canMark)
+            {
+                Notification.ShowNotification("Welcome my friend, a new day :)))");   
+            }
         }
 
         private void btnBarLibrary_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
@@ -81,6 +90,14 @@ namespace QuizletWindows
                 {
                     f = new FrmJoiningClassDetail();
                 }
+                else if(tForm==typeof(FrmStatisticsDisplay))
+                {
+                    f = new FrmStatisticsDisplay();
+                }
+                else if(tForm==typeof(FrmAchievement))
+                {
+                    f = new FrmAchievement();
+                }
                 else
                 {
                     f = new FrmLogin();
@@ -129,6 +146,34 @@ namespace QuizletWindows
         {
             CloseAllChildrenForm();
             ShowForm(typeof(FrmJoiningClass));
+        }
+
+        private void btnBarLogOut_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            ClearUser();
+            CloseAllChildrenForm();
+            FrmLogin fLogin = new FrmLogin();
+            if(fLogin.ShowDialog() == DialogResult.OK)
+            {
+                FirstLoad();
+            }
+        }
+        private void ClearUser()
+        {
+            tsNameUser.Text = "";
+            tsTypeUser.Text = "";
+        }
+
+        private void btnBarStatistics_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            CloseAllChildrenForm();
+            ShowForm(typeof(FrmStatisticsDisplay));
+        }
+
+        private void btnBarAchievement_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            CloseAllChildrenForm();
+            ShowForm(typeof(FrmAchievement));
         }
     }
 }

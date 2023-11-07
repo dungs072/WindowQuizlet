@@ -54,5 +54,9 @@ namespace QuizletWindows.Forms
             }
         }
 
+        private void FrmLogin_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            
+        }
     }
 }

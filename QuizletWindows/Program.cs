@@ -48,6 +48,7 @@ namespace QuizletWindows
             UserApi.Instance.SetHttpClient(httpClient);
             TerminologyApi.Instance.SetHttpClient(httpClient);
             ClassApi.Instance.SetHttpClient(httpClient);
+            AchivementApi.Instance.SetHttpClient(httpClient);
         }
     }
 }
