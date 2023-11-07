@@ -10,6 +10,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static DevExpress.XtraEditors.Mask.MaskSettings;
 
 namespace QuizletWindows.Forms.Class
 {
@@ -56,6 +57,45 @@ namespace QuizletWindows.Forms.Class
         {
             FrmRegisterJoiningClass frmRegisterJoiningClass = new FrmRegisterJoiningClass();
             frmRegisterJoiningClass.ShowDialog();
+            FetchDataTable();
+        }
+        private int GetClassId()
+        {
+            if (joiningClassGridView.SelectedRows.Count > 0)
+            {
+                DataGridViewRow selectedRow = joiningClassGridView.SelectedRows[0];
+                string cellValue = selectedRow.Cells["ClassId"].Value.ToString();
+                return int.Parse(cellValue);
+            }
+            return -1;
+        }
+
+        private async void btnBarCancelRegistration_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            int classId = GetClassId();
+            if (classId == -1) { return; }
+            DialogResult result = Notification.ShowDeleteWarning("Are you sure about quitting your class");
+            if (result == DialogResult.Cancel) { return; }
+            var check = await ClassApi.Instance.DeleteParticipantFromClass(classId, Program.UserId);
+            if (!check)
+            {
+                Notification.ShowError("Cannot quit from class. Server error");
+
+            }
+            else
+            {
+                Notification.ShowNotification("Quit from class successfully");
+                FetchDataTable();
+            }
+        }
+
+        private void btnBarGoTo_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            int classId = GetClassId();
+            if (classId == -1) { return; }
+            Program.mainMenu.CloseAllChildrenForm();
+            FrmJoiningClassDetail.ClassId = classId;
+            Program.mainMenu.ShowForm(typeof(FrmJoiningClassDetail));
         }
     }
 }

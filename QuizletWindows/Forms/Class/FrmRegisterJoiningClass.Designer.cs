@@ -35,6 +35,7 @@
             this.txtSearchJoinningClass = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.registerJoiningClassGridView = new System.Windows.Forms.DataGridView();
+            this.LearningModuleId = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ClassId = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.LearningModuleName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ClassName = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -48,6 +49,7 @@
             this.barDockControlBottom = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlLeft = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlRight = new DevExpress.XtraBars.BarDockControl();
+            this.btnBarRegister = new DevExpress.XtraBars.BarButtonItem();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.registerJoiningClassGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
@@ -67,7 +69,7 @@
             // btnSearch
             // 
             this.btnSearch.BackColor = System.Drawing.Color.Silver;
-            this.btnSearch.Location = new System.Drawing.Point(529, 19);
+            this.btnSearch.Location = new System.Drawing.Point(539, 19);
             this.btnSearch.Name = "btnSearch";
             this.btnSearch.Size = new System.Drawing.Size(109, 46);
             this.btnSearch.TabIndex = 2;
@@ -77,7 +79,7 @@
             // 
             // txtSearchJoinningClass
             // 
-            this.txtSearchJoinningClass.Location = new System.Drawing.Point(134, 27);
+            this.txtSearchJoinningClass.Location = new System.Drawing.Point(144, 27);
             this.txtSearchJoinningClass.Name = "txtSearchJoinningClass";
             this.txtSearchJoinningClass.Size = new System.Drawing.Size(375, 27);
             this.txtSearchJoinningClass.TabIndex = 1;
@@ -87,15 +89,16 @@
             this.label1.AutoSize = true;
             this.label1.Location = new System.Drawing.Point(23, 30);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(105, 19);
+            this.label1.Size = new System.Drawing.Size(125, 19);
             this.label1.TabIndex = 0;
-            this.label1.Text = "Finding class:";
+            this.label1.Text = "Finding module:";
             // 
             // registerJoiningClassGridView
             // 
             this.registerJoiningClassGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.registerJoiningClassGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.registerJoiningClassGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.LearningModuleId,
             this.ClassId,
             this.LearningModuleName,
             this.ClassName,
@@ -103,11 +106,21 @@
             this.NumberTerms});
             this.registerJoiningClassGridView.Dock = System.Windows.Forms.DockStyle.Fill;
             this.registerJoiningClassGridView.Location = new System.Drawing.Point(0, 116);
+            this.registerJoiningClassGridView.MultiSelect = false;
             this.registerJoiningClassGridView.Name = "registerJoiningClassGridView";
             this.registerJoiningClassGridView.RowHeadersWidth = 62;
             this.registerJoiningClassGridView.RowTemplate.Height = 28;
+            this.registerJoiningClassGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.registerJoiningClassGridView.Size = new System.Drawing.Size(1152, 345);
             this.registerJoiningClassGridView.TabIndex = 1;
+            // 
+            // LearningModuleId
+            // 
+            this.LearningModuleId.HeaderText = "LearningModuleId";
+            this.LearningModuleId.MinimumWidth = 8;
+            this.LearningModuleId.Name = "LearningModuleId";
+            this.LearningModuleId.ReadOnly = true;
+            this.LearningModuleId.Visible = false;
             // 
             // ClassId
             // 
@@ -156,9 +169,10 @@
             this.barManager1.DockControls.Add(this.barDockControlRight);
             this.barManager1.Form = this;
             this.barManager1.Items.AddRange(new DevExpress.XtraBars.BarItem[] {
-            this.btnBarReadFirst});
+            this.btnBarReadFirst,
+            this.btnBarRegister});
             this.barManager1.MainMenu = this.bar2;
-            this.barManager1.MaxItemId = 1;
+            this.barManager1.MaxItemId = 2;
             this.barManager1.StatusBar = this.bar3;
             // 
             // bar2
@@ -168,6 +182,7 @@
             this.bar2.DockRow = 0;
             this.bar2.DockStyle = DevExpress.XtraBars.BarDockStyle.Top;
             this.bar2.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
+            new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.btnBarRegister, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph),
             new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.btnBarReadFirst, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph)});
             this.bar2.OptionsBar.MultiLine = true;
             this.bar2.OptionsBar.UseWholeRow = true;
@@ -179,6 +194,7 @@
             this.btnBarReadFirst.Id = 0;
             this.btnBarReadFirst.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("btnBarReadFirst.ImageOptions.SvgImage")));
             this.btnBarReadFirst.Name = "btnBarReadFirst";
+            this.btnBarReadFirst.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnBarReadFirst_ItemClick);
             // 
             // bar3
             // 
@@ -224,6 +240,14 @@
             this.barDockControlRight.Manager = this.barManager1;
             this.barDockControlRight.Size = new System.Drawing.Size(0, 427);
             // 
+            // btnBarRegister
+            // 
+            this.btnBarRegister.Caption = "Register";
+            this.btnBarRegister.Id = 1;
+            this.btnBarRegister.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("barButtonItem1.ImageOptions.SvgImage")));
+            this.btnBarRegister.Name = "btnBarRegister";
+            this.btnBarRegister.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnBarRegister_ItemClick);
+            // 
             // FrmRegisterJoiningClass
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 19F);
@@ -263,10 +287,12 @@
         private DevExpress.XtraBars.BarDockControl barDockControlLeft;
         private DevExpress.XtraBars.BarDockControl barDockControlRight;
         private System.Windows.Forms.Button btnSearch;
+        private System.Windows.Forms.DataGridViewTextBoxColumn LearningModuleId;
         private System.Windows.Forms.DataGridViewTextBoxColumn ClassId;
         private System.Windows.Forms.DataGridViewTextBoxColumn LearningModuleName;
         private System.Windows.Forms.DataGridViewTextBoxColumn ClassName;
         private System.Windows.Forms.DataGridViewTextBoxColumn OwnerFullName;
         private System.Windows.Forms.DataGridViewTextBoxColumn NumberTerms;
+        private DevExpress.XtraBars.BarButtonItem btnBarRegister;
     }
 }

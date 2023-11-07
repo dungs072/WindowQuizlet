@@ -38,7 +38,7 @@ namespace QuizletWindows
         }
 
 
-        public void ShowForm(Type tForm)
+        public Form ShowForm(Type tForm)
         {
             Form frm = CheckExists(tForm);
             if (frm != null) frm.Activate();
@@ -77,13 +77,19 @@ namespace QuizletWindows
                 {
                     f = new FrmJoiningClass();
                 }
+                else if(tForm==typeof(FrmJoiningClassDetail))
+                {
+                    f = new FrmJoiningClassDetail();
+                }
                 else
                 {
                     f = new FrmLogin();
                 }
                 f.MdiParent = this;
                 f.Show();
+                return f;
             }
+            return null;
             
         }
         private Form CheckExists(Type ftype)

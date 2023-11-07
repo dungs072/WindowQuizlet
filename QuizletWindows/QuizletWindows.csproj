@@ -231,6 +231,18 @@
     <Compile Include="Forms\Class\FrmJoiningClass.Designer.cs">
       <DependentUpon>FrmJoiningClass.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\Class\FrmJoiningClassDetail.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Class\FrmJoiningClassDetail.Designer.cs">
+      <DependentUpon>FrmJoiningClassDetail.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Class\FrmJoiningClassReadFirst.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Class\FrmJoiningClassReadFirst.Designer.cs">
+      <DependentUpon>FrmJoiningClassReadFirst.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\Class\FrmRegisterJoiningClass.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -345,6 +357,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Class\FrmJoiningClass.resx">
       <DependentUpon>FrmJoiningClass.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Class\FrmJoiningClassDetail.resx">
+      <DependentUpon>FrmJoiningClassDetail.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Class\FrmJoiningClassReadFirst.resx">
+      <DependentUpon>FrmJoiningClassReadFirst.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Class\FrmRegisterJoiningClass.resx">
       <DependentUpon>FrmRegisterJoiningClass.cs</DependentUpon>

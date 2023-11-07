@@ -33,6 +33,12 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
             this.joiningClassGridView = new System.Windows.Forms.DataGridView();
+            this.ClassId = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ClassName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Describe = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CreatedDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.NumberLearningModules = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.NumberParticipants = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.barManager1 = new DevExpress.XtraBars.BarManager(this.components);
             this.bar2 = new DevExpress.XtraBars.Bar();
             this.btnBarRegisterNewClass = new DevExpress.XtraBars.BarButtonItem();
@@ -41,12 +47,8 @@
             this.barDockControlBottom = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlLeft = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlRight = new DevExpress.XtraBars.BarDockControl();
-            this.ClassId = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ClassName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Describe = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.CreatedDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.NumberLearningModules = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.NumberParticipants = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.btnBarCancelRegistration = new DevExpress.XtraBars.BarButtonItem();
+            this.btnBarGoTo = new DevExpress.XtraBars.BarButtonItem();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.joiningClassGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
@@ -93,6 +95,49 @@
             this.joiningClassGridView.Size = new System.Drawing.Size(1189, 370);
             this.joiningClassGridView.TabIndex = 1;
             // 
+            // ClassId
+            // 
+            this.ClassId.HeaderText = "ClassId";
+            this.ClassId.MinimumWidth = 8;
+            this.ClassId.Name = "ClassId";
+            this.ClassId.ReadOnly = true;
+            this.ClassId.Visible = false;
+            // 
+            // ClassName
+            // 
+            this.ClassName.HeaderText = "ClassName";
+            this.ClassName.MinimumWidth = 8;
+            this.ClassName.Name = "ClassName";
+            this.ClassName.ReadOnly = true;
+            // 
+            // Describe
+            // 
+            this.Describe.HeaderText = "Describe";
+            this.Describe.MinimumWidth = 8;
+            this.Describe.Name = "Describe";
+            this.Describe.ReadOnly = true;
+            // 
+            // CreatedDate
+            // 
+            this.CreatedDate.HeaderText = "Created Date";
+            this.CreatedDate.MinimumWidth = 8;
+            this.CreatedDate.Name = "CreatedDate";
+            this.CreatedDate.ReadOnly = true;
+            // 
+            // NumberLearningModules
+            // 
+            this.NumberLearningModules.HeaderText = "Modules";
+            this.NumberLearningModules.MinimumWidth = 8;
+            this.NumberLearningModules.Name = "NumberLearningModules";
+            this.NumberLearningModules.ReadOnly = true;
+            // 
+            // NumberParticipants
+            // 
+            this.NumberParticipants.HeaderText = "Participants";
+            this.NumberParticipants.MinimumWidth = 8;
+            this.NumberParticipants.Name = "NumberParticipants";
+            this.NumberParticipants.ReadOnly = true;
+            // 
             // barManager1
             // 
             this.barManager1.Bars.AddRange(new DevExpress.XtraBars.Bar[] {
@@ -104,9 +149,11 @@
             this.barManager1.DockControls.Add(this.barDockControlRight);
             this.barManager1.Form = this;
             this.barManager1.Items.AddRange(new DevExpress.XtraBars.BarItem[] {
-            this.btnBarRegisterNewClass});
+            this.btnBarRegisterNewClass,
+            this.btnBarCancelRegistration,
+            this.btnBarGoTo});
             this.barManager1.MainMenu = this.bar2;
-            this.barManager1.MaxItemId = 1;
+            this.barManager1.MaxItemId = 3;
             this.barManager1.StatusBar = this.bar3;
             // 
             // bar2
@@ -116,7 +163,9 @@
             this.bar2.DockRow = 0;
             this.bar2.DockStyle = DevExpress.XtraBars.BarDockStyle.Top;
             this.bar2.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
-            new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.btnBarRegisterNewClass, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph)});
+            new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.btnBarRegisterNewClass, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph),
+            new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.btnBarCancelRegistration, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph),
+            new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.btnBarGoTo, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph)});
             this.bar2.OptionsBar.MultiLine = true;
             this.bar2.OptionsBar.UseWholeRow = true;
             this.bar2.Text = "Main menu";
@@ -173,48 +222,21 @@
             this.barDockControlRight.Manager = this.barManager1;
             this.barDockControlRight.Size = new System.Drawing.Size(0, 428);
             // 
-            // ClassId
+            // btnBarCancelRegistration
             // 
-            this.ClassId.HeaderText = "ClassId";
-            this.ClassId.MinimumWidth = 8;
-            this.ClassId.Name = "ClassId";
-            this.ClassId.ReadOnly = true;
-            this.ClassId.Visible = false;
+            this.btnBarCancelRegistration.Caption = "Cancel Registration";
+            this.btnBarCancelRegistration.Id = 1;
+            this.btnBarCancelRegistration.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("barButtonItem1.ImageOptions.SvgImage")));
+            this.btnBarCancelRegistration.Name = "btnBarCancelRegistration";
+            this.btnBarCancelRegistration.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnBarCancelRegistration_ItemClick);
             // 
-            // ClassName
+            // btnBarGoTo
             // 
-            this.ClassName.HeaderText = "ClassName";
-            this.ClassName.MinimumWidth = 8;
-            this.ClassName.Name = "ClassName";
-            this.ClassName.ReadOnly = true;
-            // 
-            // Describe
-            // 
-            this.Describe.HeaderText = "Describe";
-            this.Describe.MinimumWidth = 8;
-            this.Describe.Name = "Describe";
-            this.Describe.ReadOnly = true;
-            // 
-            // CreatedDate
-            // 
-            this.CreatedDate.HeaderText = "Created Date";
-            this.CreatedDate.MinimumWidth = 8;
-            this.CreatedDate.Name = "CreatedDate";
-            this.CreatedDate.ReadOnly = true;
-            // 
-            // NumberLearningModules
-            // 
-            this.NumberLearningModules.HeaderText = "Modules";
-            this.NumberLearningModules.MinimumWidth = 8;
-            this.NumberLearningModules.Name = "NumberLearningModules";
-            this.NumberLearningModules.ReadOnly = true;
-            // 
-            // NumberParticipants
-            // 
-            this.NumberParticipants.HeaderText = "Participants";
-            this.NumberParticipants.MinimumWidth = 8;
-            this.NumberParticipants.Name = "NumberParticipants";
-            this.NumberParticipants.ReadOnly = true;
+            this.btnBarGoTo.Caption = "Go to";
+            this.btnBarGoTo.Id = 2;
+            this.btnBarGoTo.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("btnBarGoTo.ImageOptions.SvgImage")));
+            this.btnBarGoTo.Name = "btnBarGoTo";
+            this.btnBarGoTo.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnBarGoTo_ItemClick);
             // 
             // FrmJoiningClass
             // 
@@ -259,5 +281,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn CreatedDate;
         private System.Windows.Forms.DataGridViewTextBoxColumn NumberLearningModules;
         private System.Windows.Forms.DataGridViewTextBoxColumn NumberParticipants;
+        private DevExpress.XtraBars.BarButtonItem btnBarCancelRegistration;
+        private DevExpress.XtraBars.BarButtonItem btnBarGoTo;
     }
 }

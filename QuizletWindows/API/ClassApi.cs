@@ -127,9 +127,11 @@ namespace QuizletWindows.API
             }
             return true;
         }
+
         public List<ClassViewModel> GetJoinClass(int userId)
         {
             return client.GetFromJsonAsync<List<ClassViewModel>>(Api.ClassJoin + $"/{userId}").Result;
         }
+
     }
 }

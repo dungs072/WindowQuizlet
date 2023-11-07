@@ -55,4 +55,5 @@ namespace QuizletWindows.ViewModels.Classes
         public DateTime RegisterDate { get; set; }
         public bool IsAccepted { get; set; }
     }
+
 }

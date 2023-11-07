@@ -1,6 +1,7 @@
 ﻿using DevExpress.XtraBars.Docking2010.Views.WindowsUI;
 using DevExpress.XtraEditors;
 using QuizletWindows.API;
+using QuizletWindows.Forms.Class;
 using QuizletWindows.Forms.Library.Objective;
 using QuizletWindows.ViewModels.Terminologies;
 using System;
@@ -17,6 +18,7 @@ namespace QuizletWindows.Forms.Library
 {
     public partial class FrmTerms : DevExpress.XtraEditors.XtraForm
     {
+        public static bool isJoiningClassMode = false;
         private List<TermViewModel> terms;
         public static int ModuleId { get; set; }
         public static int TitleId { get;set; }
@@ -26,6 +28,7 @@ namespace QuizletWindows.Forms.Library
         {
             InitializeComponent();
             FrmAddTerm.OnCreated += FetchDataTable;
+            isJoiningClassMode = false;
             FrmEditTerm.OnUpdated += FetchDataTable;
         }
         private void FrmTerms_Load(object sender, EventArgs e)
@@ -33,6 +36,7 @@ namespace QuizletWindows.Forms.Library
             FetchDataTable();
             InitialSetUp();
             ModuleName.Text = ModuleNameDisplay+" - "+ DescribeNameDisplay;
+            
         }
         private void FetchDataTable()
         {
@@ -136,7 +140,6 @@ namespace QuizletWindows.Forms.Library
         {
             if (terms.Count <=4) { return; }
             FrmObjectivePractice.LearningModuleId = ModuleId;
-            this.Close();
             Program.mainMenu.ShowForm(typeof(FrmObjectivePractice));
         }
 
@@ -148,8 +151,18 @@ namespace QuizletWindows.Forms.Library
         private void btnBarBack_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             this.Close();
-            FrmYourModules.TitleId = TitleId;
-            Program.mainMenu.ShowForm(typeof(FrmYourModules));
+            Program.mainMenu.CloseAllChildrenForm();
+            if (isJoiningClassMode)
+            {
+                
+                Program.mainMenu.ShowForm(typeof(FrmJoiningClassDetail));
+            }
+            else
+            {
+                FrmYourModules.TitleId = TitleId;
+                Program.mainMenu.ShowForm(typeof(FrmYourModules));
+            }
+            
         }
 
         private void termGridView_DataBindingComplete(object sender, DataGridViewBindingCompleteEventArgs e)
@@ -159,6 +172,11 @@ namespace QuizletWindows.Forms.Library
                 dGVRow.HeaderCell.Value = String.Format("{0}", dGVRow.Index + 1);
             }
             this.termGridView.AutoResizeRowHeadersWidth(DataGridViewRowHeadersWidthSizeMode.AutoSizeToAllHeaders);
+        }
+        public void ToggleJoiningClassMode(bool state)
+        {
+            btnBarAdd.Enabled = btnBarDelete.Enabled = btnBarEdit.Enabled = state;
+            isJoiningClassMode = !state;
         }
     }
 }

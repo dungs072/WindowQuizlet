@@ -3,6 +3,7 @@ using QuizletWindows.ViewModels.Terminologies;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
+using System.Windows.Forms;
 
 namespace QuizletWindows.Forms.Library.Objective
 {
@@ -100,9 +101,8 @@ namespace QuizletWindows.Forms.Library.Objective
 
         private void btnBarExit_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            FrmTerms.ModuleId = LearningModuleId;
             this.Close();
-            Program.mainMenu.ShowForm(typeof(FrmTerms));
+            
         }
         private void ResetColorRadioButton()
         {
