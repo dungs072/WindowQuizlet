@@ -10,6 +10,7 @@ namespace QuizletWindows.Forms.Library.Objective
     public partial class FrmObjectivePractice : DevExpress.XtraEditors.XtraForm
     {
         private List<ObjectivePack> objectivePacks;
+        private List<ResultTest> resultTestList;
         private int currentQuestionIndex = 0;
         public static int LearningModuleId { get; set; }
         public FrmObjectivePractice()
@@ -20,7 +21,7 @@ namespace QuizletWindows.Forms.Library.Objective
         private void FrmObjectivePractice_Load(object sender, EventArgs e)
         {
             objectivePacks = TerminologyApi.Instance.GetObjectivePacks(LearningModuleId);
-           
+            resultTestList = new List<ResultTest>();    
             LoadNewQuestion(currentQuestionIndex);
         }
 
@@ -31,17 +32,23 @@ namespace QuizletWindows.Forms.Library.Objective
             LoadNewQuestion(currentQuestionIndex);
         }
 
-        private void btnCheck_Click(object sender, EventArgs e)
+        private async void btnCheck_Click(object sender, EventArgs e)
         {
+            ResultQuestion question = new ResultQuestion();
+            question.TermId = objectivePacks[currentQuestionIndex].TermId;
+            
             if (radioA.Checked)
             {
                 if (objectivePacks[currentQuestionIndex].Answer=="A")
                 {
                     radioA.ForeColor = Color.Green;
+                    question.IsRightAnswer = true;
                 }
                 else
                 {
                     radioA.ForeColor = Color.Red;
+                    question.IsRightAnswer = false;
+                    resultTestList.Add(new ResultTest() { TermName = objectivePacks[currentQuestionIndex].Question, Explanation = objectivePacks[currentQuestionIndex].GetAnswer });
                 }
                 radioA.Checked = false;
             }
@@ -50,10 +57,13 @@ namespace QuizletWindows.Forms.Library.Objective
                 if (objectivePacks[currentQuestionIndex].Answer == "B")
                 {
                     radioB.ForeColor = Color.Green;
+                    question.IsRightAnswer = true;
                 }
                 else
                 {
                     radioB.ForeColor = Color.Red;
+                    question.IsRightAnswer = false;
+                    resultTestList.Add(new ResultTest() { TermName = objectivePacks[currentQuestionIndex].Question, Explanation = objectivePacks[currentQuestionIndex].GetAnswer });
                 }
                 radioB.Checked = false;
             }
@@ -62,10 +72,13 @@ namespace QuizletWindows.Forms.Library.Objective
                 if (objectivePacks[currentQuestionIndex].Answer == "C")
                 {
                     radioC.ForeColor = Color.Green;
+                    question.IsRightAnswer = true;
                 }
                 else
                 {
                     radioC.ForeColor = Color.Red;
+                    question.IsRightAnswer = false;
+                    resultTestList.Add(new ResultTest() { TermName = objectivePacks[currentQuestionIndex].Question, Explanation = objectivePacks[currentQuestionIndex].GetAnswer });
                 }
                 radioC.Checked = false;
             }
@@ -74,21 +87,19 @@ namespace QuizletWindows.Forms.Library.Objective
                 if (objectivePacks[currentQuestionIndex].Answer == "D")
                 {
                     radioD.ForeColor = Color.Green;
+                    question.IsRightAnswer = true;
                 }
                 else
                 {
                     radioD.ForeColor = Color.Red;
+                    question.IsRightAnswer = false;
+                    resultTestList.Add(new ResultTest() { TermName = objectivePacks[currentQuestionIndex].Question, Explanation = objectivePacks[currentQuestionIndex].GetAnswer });
                 }
                 radioD.Checked = false;
             }
+            var state = await TerminologyApi.Instance.UpdateTermTest(question);
         }
 
-        private void btnNext_Click(object sender, EventArgs e)
-        {
-            currentQuestionIndex = Math.Min(currentQuestionIndex + 1, objectivePacks.Count - 1);
-            ResetColorRadioButton();
-            LoadNewQuestion(currentQuestionIndex);
-        }
         private void LoadNewQuestion(int currentQuestion)
         {
             QuestionName.Text = objectivePacks[currentQuestion].Question.Trim();
@@ -101,13 +112,37 @@ namespace QuizletWindows.Forms.Library.Objective
 
         private void btnBarExit_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            this.Close();
+            DialogResult result = Notification.ShowDeleteWarning("Do you want to exit ?");
+            if (result == DialogResult.OK)
+            {
+                this.Close();
+            }
+            
             
         }
         private void ResetColorRadioButton()
         {
             radioA.ForeColor = Color.Black; radioB.ForeColor = Color.Black;
             radioC.ForeColor = Color.Black; radioD.ForeColor = Color.Black;
+        }
+
+        private void btnNextTo_Click(object sender, EventArgs e)
+        {
+            currentQuestionIndex = Math.Min(currentQuestionIndex + 1, objectivePacks.Count);
+            if(currentQuestionIndex==objectivePacks.Count)
+            {
+                FrmResultTest frmResultTest = new FrmResultTest();
+                frmResultTest.SetResults(resultTestList);
+                frmResultTest.SetPractice(this);
+                frmResultTest.SetResultText($"{resultTestList.Count}/{objectivePacks.Count} answers are wrong");
+                frmResultTest.ShowDialog();
+            }
+            else
+            {
+                ResetColorRadioButton();
+                LoadNewQuestion(currentQuestionIndex);
+            }
+            
         }
     }
 }

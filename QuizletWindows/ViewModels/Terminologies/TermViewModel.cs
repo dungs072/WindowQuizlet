@@ -17,4 +17,16 @@ namespace QuizletWindows.ViewModels.Terminologies
         public int LevelId { get; set; } = 1;
         public LearningModuleViewModel2 LearningModule { get; set; }
     }
+
+    public class ResultQuestion
+    {
+        public int TermId { get; set; }
+        public bool IsRightAnswer { get; set; }
+    }
+
+    public class ResultTest
+    {
+        public string TermName { get; set; }
+        public string Explanation { get; set; }
+    }
 }

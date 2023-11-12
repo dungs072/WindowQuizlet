@@ -31,26 +31,25 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmObjectivePractice));
             this.panel3 = new System.Windows.Forms.Panel();
+            this.btnCheck = new System.Windows.Forms.Button();
             this.barManager1 = new DevExpress.XtraBars.BarManager(this.components);
+            this.bar2 = new DevExpress.XtraBars.Bar();
+            this.btnBarExit = new DevExpress.XtraBars.BarButtonItem();
             this.barDockControlTop = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlBottom = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlLeft = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlRight = new DevExpress.XtraBars.BarDockControl();
-            this.bar2 = new DevExpress.XtraBars.Bar();
-            this.btnBarExit = new DevExpress.XtraBars.BarButtonItem();
-            this.btnBack = new System.Windows.Forms.Button();
-            this.btnNext = new System.Windows.Forms.Button();
-            this.btnCheck = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.ObjectiveNamePractice = new System.Windows.Forms.Label();
-            this.QuestionName = new System.Windows.Forms.Label();
-            this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
-            this.radioA = new System.Windows.Forms.RadioButton();
-            this.radioB = new System.Windows.Forms.RadioButton();
-            this.radioC = new System.Windows.Forms.RadioButton();
-            this.radioD = new System.Windows.Forms.RadioButton();
-            this.panel2 = new System.Windows.Forms.Panel();
             this.sampleRadio = new System.Windows.Forms.RadioButton();
+            this.QuestionName = new System.Windows.Forms.Label();
+            this.ObjectiveNamePractice = new System.Windows.Forms.Label();
+            this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+            this.radioD = new System.Windows.Forms.RadioButton();
+            this.radioC = new System.Windows.Forms.RadioButton();
+            this.radioB = new System.Windows.Forms.RadioButton();
+            this.radioA = new System.Windows.Forms.RadioButton();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.btnNextTo = new DevExpress.XtraEditors.SimpleButton();
             this.panel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
             this.panel1.SuspendLayout();
@@ -61,14 +60,25 @@
             // panel3
             // 
             this.panel3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel3.Controls.Add(this.btnNextTo);
             this.panel3.Controls.Add(this.btnCheck);
-            this.panel3.Controls.Add(this.btnNext);
-            this.panel3.Controls.Add(this.btnBack);
             this.panel3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel3.Location = new System.Drawing.Point(0, 252);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(909, 89);
             this.panel3.TabIndex = 2;
+            // 
+            // btnCheck
+            // 
+            this.btnCheck.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.btnCheck.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
+            this.btnCheck.Location = new System.Drawing.Point(350, 20);
+            this.btnCheck.Name = "btnCheck";
+            this.btnCheck.Size = new System.Drawing.Size(242, 44);
+            this.btnCheck.TabIndex = 2;
+            this.btnCheck.Text = "Check";
+            this.btnCheck.UseVisualStyleBackColor = false;
+            this.btnCheck.Click += new System.EventHandler(this.btnCheck_Click);
             // 
             // barManager1
             // 
@@ -83,6 +93,27 @@
             this.btnBarExit});
             this.barManager1.MainMenu = this.bar2;
             this.barManager1.MaxItemId = 1;
+            // 
+            // bar2
+            // 
+            this.bar2.BarName = "Main menu";
+            this.bar2.DockCol = 0;
+            this.bar2.DockRow = 0;
+            this.bar2.DockStyle = DevExpress.XtraBars.BarDockStyle.Top;
+            this.bar2.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
+            new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.btnBarExit, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph)});
+            this.bar2.OptionsBar.MultiLine = true;
+            this.bar2.OptionsBar.UseWholeRow = true;
+            this.bar2.Text = "Main menu";
+            // 
+            // btnBarExit
+            // 
+            this.btnBarExit.Caption = "exit";
+            this.btnBarExit.Id = 0;
+            this.btnBarExit.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnBarExit.ImageOptions.Image")));
+            this.btnBarExit.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("btnBarExit.ImageOptions.LargeImage")));
+            this.btnBarExit.Name = "btnBarExit";
+            this.btnBarExit.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnBarExit_ItemClick);
             // 
             // barDockControlTop
             // 
@@ -116,62 +147,6 @@
             this.barDockControlRight.Manager = this.barManager1;
             this.barDockControlRight.Size = new System.Drawing.Size(0, 404);
             // 
-            // bar2
-            // 
-            this.bar2.BarName = "Main menu";
-            this.bar2.DockCol = 0;
-            this.bar2.DockStyle = DevExpress.XtraBars.BarDockStyle.Top;
-            this.bar2.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
-            new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.btnBarExit, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph)});
-            this.bar2.OptionsBar.MultiLine = true;
-            this.bar2.OptionsBar.UseWholeRow = true;
-            this.bar2.Text = "Main menu";
-            // 
-            // btnBarExit
-            // 
-            this.btnBarExit.Caption = "exit";
-            this.btnBarExit.Id = 0;
-            this.btnBarExit.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("barButtonItem1.ImageOptions.Image")));
-            this.btnBarExit.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("barButtonItem1.ImageOptions.LargeImage")));
-            this.btnBarExit.Name = "btnBarExit";
-            this.btnBarExit.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnBarExit_ItemClick);
-            // 
-            // btnBack
-            // 
-            this.btnBack.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.btnBack.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
-            this.btnBack.Location = new System.Drawing.Point(3, 21);
-            this.btnBack.Name = "btnBack";
-            this.btnBack.Size = new System.Drawing.Size(242, 44);
-            this.btnBack.TabIndex = 0;
-            this.btnBack.Text = "Back";
-            this.btnBack.UseVisualStyleBackColor = false;
-            this.btnBack.Click += new System.EventHandler(this.btnBack_Click);
-            // 
-            // btnNext
-            // 
-            this.btnNext.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.btnNext.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
-            this.btnNext.Location = new System.Drawing.Point(664, 21);
-            this.btnNext.Name = "btnNext";
-            this.btnNext.Size = new System.Drawing.Size(242, 44);
-            this.btnNext.TabIndex = 1;
-            this.btnNext.Text = "Next";
-            this.btnNext.UseVisualStyleBackColor = false;
-            this.btnNext.Click += new System.EventHandler(this.btnNext_Click);
-            // 
-            // btnCheck
-            // 
-            this.btnCheck.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.btnCheck.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
-            this.btnCheck.Location = new System.Drawing.Point(331, 21);
-            this.btnCheck.Name = "btnCheck";
-            this.btnCheck.Size = new System.Drawing.Size(242, 44);
-            this.btnCheck.TabIndex = 2;
-            this.btnCheck.Text = "Check";
-            this.btnCheck.UseVisualStyleBackColor = false;
-            this.btnCheck.Click += new System.EventHandler(this.btnCheck_Click);
-            // 
             // panel1
             // 
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
@@ -184,17 +159,17 @@
             this.panel1.Size = new System.Drawing.Size(909, 70);
             this.panel1.TabIndex = 0;
             // 
-            // ObjectiveNamePractice
+            // sampleRadio
             // 
-            this.ObjectiveNamePractice.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
-            this.ObjectiveNamePractice.AutoSize = true;
-            this.ObjectiveNamePractice.Font = new System.Drawing.Font("Tahoma", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ObjectiveNamePractice.Location = new System.Drawing.Point(-168, 24);
-            this.ObjectiveNamePractice.Name = "ObjectiveNamePractice";
-            this.ObjectiveNamePractice.Size = new System.Drawing.Size(72, 24);
-            this.ObjectiveNamePractice.TabIndex = 0;
-            this.ObjectiveNamePractice.Text = "label1";
-            this.ObjectiveNamePractice.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.sampleRadio.AutoSize = true;
+            this.sampleRadio.Location = new System.Drawing.Point(88, 30);
+            this.sampleRadio.Name = "sampleRadio";
+            this.sampleRadio.Size = new System.Drawing.Size(125, 23);
+            this.sampleRadio.TabIndex = 2;
+            this.sampleRadio.TabStop = true;
+            this.sampleRadio.Text = "radioButton1";
+            this.sampleRadio.UseVisualStyleBackColor = true;
+            this.sampleRadio.Visible = false;
             // 
             // QuestionName
             // 
@@ -206,6 +181,18 @@
             this.QuestionName.Size = new System.Drawing.Size(58, 29);
             this.QuestionName.TabIndex = 1;
             this.QuestionName.Text = "123";
+            // 
+            // ObjectiveNamePractice
+            // 
+            this.ObjectiveNamePractice.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
+            this.ObjectiveNamePractice.AutoSize = true;
+            this.ObjectiveNamePractice.Font = new System.Drawing.Font("Tahoma", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ObjectiveNamePractice.Location = new System.Drawing.Point(-168, 24);
+            this.ObjectiveNamePractice.Name = "ObjectiveNamePractice";
+            this.ObjectiveNamePractice.Size = new System.Drawing.Size(72, 24);
+            this.ObjectiveNamePractice.TabIndex = 0;
+            this.ObjectiveNamePractice.Text = "label1";
+            this.ObjectiveNamePractice.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // tableLayoutPanel1
             // 
@@ -227,33 +214,19 @@
             this.tableLayoutPanel1.Size = new System.Drawing.Size(909, 182);
             this.tableLayoutPanel1.TabIndex = 0;
             // 
-            // radioA
+            // radioD
             // 
-            this.radioA.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.radioA.AutoSize = true;
-            this.radioA.Font = new System.Drawing.Font("Tahoma", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.radioA.Location = new System.Drawing.Point(30, 8);
-            this.radioA.Margin = new System.Windows.Forms.Padding(30, 3, 3, 3);
-            this.radioA.Name = "radioA";
-            this.radioA.Size = new System.Drawing.Size(168, 28);
-            this.radioA.TabIndex = 0;
-            this.radioA.Text = "radioButton1";
-            this.radioA.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.radioA.UseVisualStyleBackColor = true;
-            // 
-            // radioB
-            // 
-            this.radioB.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.radioB.AutoSize = true;
-            this.radioB.Font = new System.Drawing.Font("Tahoma", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.radioB.Location = new System.Drawing.Point(30, 53);
-            this.radioB.Margin = new System.Windows.Forms.Padding(30, 3, 3, 3);
-            this.radioB.Name = "radioB";
-            this.radioB.Size = new System.Drawing.Size(168, 28);
-            this.radioB.TabIndex = 1;
-            this.radioB.Text = "radioButton2";
-            this.radioB.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.radioB.UseVisualStyleBackColor = true;
+            this.radioD.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.radioD.AutoSize = true;
+            this.radioD.Font = new System.Drawing.Font("Tahoma", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.radioD.Location = new System.Drawing.Point(30, 144);
+            this.radioD.Margin = new System.Windows.Forms.Padding(30, 3, 3, 3);
+            this.radioD.Name = "radioD";
+            this.radioD.Size = new System.Drawing.Size(168, 28);
+            this.radioD.TabIndex = 3;
+            this.radioD.Text = "radioButton4";
+            this.radioD.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.radioD.UseVisualStyleBackColor = true;
             // 
             // radioC
             // 
@@ -269,19 +242,33 @@
             this.radioC.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.radioC.UseVisualStyleBackColor = true;
             // 
-            // radioD
+            // radioB
             // 
-            this.radioD.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.radioD.AutoSize = true;
-            this.radioD.Font = new System.Drawing.Font("Tahoma", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.radioD.Location = new System.Drawing.Point(30, 144);
-            this.radioD.Margin = new System.Windows.Forms.Padding(30, 3, 3, 3);
-            this.radioD.Name = "radioD";
-            this.radioD.Size = new System.Drawing.Size(168, 28);
-            this.radioD.TabIndex = 3;
-            this.radioD.Text = "radioButton4";
-            this.radioD.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.radioD.UseVisualStyleBackColor = true;
+            this.radioB.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.radioB.AutoSize = true;
+            this.radioB.Font = new System.Drawing.Font("Tahoma", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.radioB.Location = new System.Drawing.Point(30, 53);
+            this.radioB.Margin = new System.Windows.Forms.Padding(30, 3, 3, 3);
+            this.radioB.Name = "radioB";
+            this.radioB.Size = new System.Drawing.Size(168, 28);
+            this.radioB.TabIndex = 1;
+            this.radioB.Text = "radioButton2";
+            this.radioB.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.radioB.UseVisualStyleBackColor = true;
+            // 
+            // radioA
+            // 
+            this.radioA.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.radioA.AutoSize = true;
+            this.radioA.Font = new System.Drawing.Font("Tahoma", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.radioA.Location = new System.Drawing.Point(30, 8);
+            this.radioA.Margin = new System.Windows.Forms.Padding(30, 3, 3, 3);
+            this.radioA.Name = "radioA";
+            this.radioA.Size = new System.Drawing.Size(168, 28);
+            this.radioA.TabIndex = 0;
+            this.radioA.Text = "radioButton1";
+            this.radioA.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.radioA.UseVisualStyleBackColor = true;
             // 
             // panel2
             // 
@@ -295,17 +282,16 @@
             this.panel2.Size = new System.Drawing.Size(911, 343);
             this.panel2.TabIndex = 1;
             // 
-            // sampleRadio
+            // btnNextTo
             // 
-            this.sampleRadio.AutoSize = true;
-            this.sampleRadio.Location = new System.Drawing.Point(88, 30);
-            this.sampleRadio.Name = "sampleRadio";
-            this.sampleRadio.Size = new System.Drawing.Size(125, 23);
-            this.sampleRadio.TabIndex = 2;
-            this.sampleRadio.TabStop = true;
-            this.sampleRadio.Text = "radioButton1";
-            this.sampleRadio.UseVisualStyleBackColor = true;
-            this.sampleRadio.Visible = false;
+            this.btnNextTo.Dock = System.Windows.Forms.DockStyle.Right;
+            this.btnNextTo.ImageOptions.ImageToTextAlignment = DevExpress.XtraEditors.ImageAlignToText.TopCenter;
+            this.btnNextTo.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("simpleButton1.ImageOptions.SvgImage")));
+            this.btnNextTo.Location = new System.Drawing.Point(844, 0);
+            this.btnNextTo.Name = "btnNextTo";
+            this.btnNextTo.Size = new System.Drawing.Size(63, 87);
+            this.btnNextTo.TabIndex = 3;
+            this.btnNextTo.Click += new System.EventHandler(this.btnNextTo_Click);
             // 
             // FrmObjectivePractice
             // 
@@ -343,8 +329,6 @@
         private DevExpress.XtraBars.BarDockControl barDockControlLeft;
         private DevExpress.XtraBars.BarDockControl barDockControlRight;
         private System.Windows.Forms.Button btnCheck;
-        private System.Windows.Forms.Button btnNext;
-        private System.Windows.Forms.Button btnBack;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
         private System.Windows.Forms.RadioButton radioD;
@@ -355,5 +339,6 @@
         private System.Windows.Forms.Label QuestionName;
         private System.Windows.Forms.Label ObjectiveNamePractice;
         private System.Windows.Forms.RadioButton sampleRadio;
+        private DevExpress.XtraEditors.SimpleButton btnNextTo;
     }
 }

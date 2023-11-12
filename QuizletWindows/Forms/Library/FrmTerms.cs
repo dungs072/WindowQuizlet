@@ -24,6 +24,8 @@ namespace QuizletWindows.Forms.Library
         public static int TitleId { get;set; }
         public static string ModuleNameDisplay { get; set; }
         public static string DescribeNameDisplay { get; set; }
+
+        private int currentTermIndex = 0;
         public FrmTerms()
         {
             InitializeComponent();
@@ -36,7 +38,38 @@ namespace QuizletWindows.Forms.Library
             FetchDataTable();
             InitialSetUp();
             ModuleName.Text = ModuleNameDisplay+" - "+ DescribeNameDisplay;
+            LoadCurrentTermName(currentTermIndex);
+        }
+        private void LoadCurrentTermName(int currentIndex)
+        {
+            if (currentIndex < 0 || currentIndex >= terms.Count) { return; }
+            TermViewModel term = terms[currentIndex];
+            imageDisplay.Image = System.Drawing.Image.FromStream(new System.Net.WebClient().OpenRead("https://firebasestorage.googleapis.com/v0/b/quizlet-c9cab.appspot.com/o/main%2FFlashCard.png?alt=media&token=9a3befe7-f2f5-4eb2-9f6d-69e5b831d52f"));
+            imageDisplay.Properties.SizeMode = DevExpress.XtraEditors.Controls.PictureSizeMode.Zoom;
+            txtDisplayTerm.Text = term.TermName;
+        }
+        private void LoadCurrentImageTerm(int currentIndex)
+        {
+            if(currentIndex<0||currentIndex>=terms.Count) { return; }
+            TermViewModel term = terms[currentIndex];
+            txtDisplayTerm.Text = term.Explaination;
+            if (term.Image == null)
+            {
+                imageDisplay.Image = System.Drawing.Image.FromStream(new System.Net.WebClient().OpenRead("https://firebasestorage.googleapis.com/v0/b/quizlet-c9cab.appspot.com/o/main%2FFlashCard.png?alt=media&token=9a3befe7-f2f5-4eb2-9f6d-69e5b831d52f"));
+                imageDisplay.Properties.SizeMode = DevExpress.XtraEditors.Controls.PictureSizeMode.Zoom;
+            }
+            else
+            {
+                string imageUrl = term.Image;
+                imageDisplay.Image = System.Drawing.Image.FromStream(new System.Net.WebClient().OpenRead(imageUrl));
+                imageDisplay.Properties.SizeMode = DevExpress.XtraEditors.Controls.PictureSizeMode.Zoom;
+            }
             
+           
+        }
+        private void imageDisplay_Click(object sender, EventArgs e)
+        {
+            LoadCurrentImageTerm(currentTermIndex);
         }
         private void FetchDataTable()
         {
@@ -51,9 +84,11 @@ namespace QuizletWindows.Forms.Library
             DataGridViewColumn termName = termGridView.Columns["TermName"];
             DataGridViewColumn termExplanation = termGridView.Columns["TermExplanation"];
             DataGridViewColumn termId = termGridView.Columns["TermId"];
+            DataGridViewColumn image = termGridView.Columns["Image"];
             termName.DataPropertyName = "TermName";
             termExplanation.DataPropertyName = "Explaination";
             termId.DataPropertyName = "TermId";
+            image.DataPropertyName = "Image";
             termName.Width = 500;
             termGridView.ColumnHeadersDefaultCellStyle.Font = new Font(termGridView.ColumnHeadersDefaultCellStyle.Font, FontStyle.Bold);
             termGridView.Refresh();
@@ -93,6 +128,16 @@ namespace QuizletWindows.Forms.Library
             }
             return "";
         }
+        private string GetImage()
+        {
+            if (termGridView.SelectedRows.Count > 0)
+            {
+                DataGridViewRow selectedRow = termGridView.SelectedRows[0];
+                string cellValue = selectedRow.Cells["Image"].Value.ToString();
+                return cellValue;
+            }
+            return "";
+        }
 
         private void btnBarAdd_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
@@ -107,11 +152,13 @@ namespace QuizletWindows.Forms.Library
             int termId = GetTermId();
             string termName = GetTermName();
             string explanation = GetExplanation();
+            string image = GetImage();
             FrmEditTerm.LearningModuleId = ModuleId;
             FrmEditTerm.TermId = termId;
             FrmEditTerm frmEditTerm = new FrmEditTerm();
             frmEditTerm.SetTextExplanationInput(explanation);
             frmEditTerm.SetTextTermNameInput(termName);
+            frmEditTerm.SetImage(image);
             frmEditTerm.ShowDialog();
         }
 
@@ -177,6 +224,18 @@ namespace QuizletWindows.Forms.Library
         {
             btnBarAdd.Enabled = btnBarDelete.Enabled = btnBarEdit.Enabled = state;
             isJoiningClassMode = !state;
+        }
+
+        private void btnNext_Click(object sender, EventArgs e)
+        {
+            currentTermIndex = Math.Min(currentTermIndex+1,terms.Count-1);
+            LoadCurrentTermName(currentTermIndex);
+        }
+
+        private void btnPrevious_Click(object sender, EventArgs e)
+        {
+            currentTermIndex = Math.Max(currentTermIndex - 1, 0);
+            LoadCurrentTermName(currentTermIndex);
         }
     }
 }

@@ -144,6 +144,16 @@ namespace QuizletWindows.API
         {
             return client.GetFromJsonAsync<List<ObjectivePack>>(Api.TermUrlObjective + $"{learningModuleId}").Result;
         }
+
+        public async Task<bool> UpdateTermTest(ResultQuestion resultQuestion)
+        {
+            HttpResponseMessage response = await client.PutAsJsonAsync<ResultQuestion>(Api.TermTest, resultQuestion);
+            if (response.StatusCode == HttpStatusCode.BadRequest)
+            {
+                return false;
+            }
+            return true;
+        }
         #endregion
     }
 }

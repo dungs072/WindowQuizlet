@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Reflection;
 using System.Text;
@@ -16,13 +17,23 @@ namespace QuizletWindows.Forms.Library
 {
     public partial class FrmEditTerm : DevExpress.XtraEditors.XtraForm
     {
+        public FireBaseGoogle fireBaseGoogle;
         public static event Action OnUpdated;
         public static int LearningModuleId { get; set; }
         public static int TermId { get; set; }
+        private OpenFileDialog openFileDialog1;
+        private string imageUrl;
 
         public FrmEditTerm()
         {
             InitializeComponent();
+            openFileDialog1 = new OpenFileDialog();
+            openFileDialog1.Filter = "Image Files|*.jpg;*.jpeg;*.png;*.gif;*.bmp|All files|*.*";
+            fireBaseGoogle = new FireBaseGoogle();
+        }
+        private void FrmEditTerm_Load(object sender, EventArgs e)
+        {
+            
         }
         public void SetTextTermNameInput(string text)
         {
@@ -31,6 +42,11 @@ namespace QuizletWindows.Forms.Library
         public void SetTextExplanationInput(string text)
         {
             inputExplanation.Text = text;
+        }
+        public void SetImage(string url)
+        {
+            txtImage.Image = System.Drawing.Image.FromStream(new System.Net.WebClient().OpenRead(url));
+            imageUrl = url;
         }
 
         private async void btnUpdate_Click(object sender, EventArgs e)
@@ -45,6 +61,18 @@ namespace QuizletWindows.Forms.Library
             viewModel.TermId = TermId;
             viewModel.TermName = inputTermName.Text.Trim();
             viewModel.Explaination = inputExplanation.Text.Trim();
+            if(imageUrl!=null)
+            {
+                fireBaseGoogle.DeleteTheOldImage(imageUrl);
+            }
+            byte[] imageBytes = fireBaseGoogle.ImageToByteArray(txtImage.Image);
+            var task = fireBaseGoogle.FirebaseStorage
+                .Child("images")
+                .Child($"image_{DateTime.Now.Ticks}.png")
+                .PutAsync(new MemoryStream(imageBytes));
+
+            var downloadUrl = await task;
+            viewModel.Image = downloadUrl;
             var canUpdate = await TerminologyApi.Instance.UpdateTerm(viewModel);
             if (!canUpdate)
             {
@@ -61,5 +89,16 @@ namespace QuizletWindows.Forms.Library
         {
             this.Close();
         }
+
+        private void btnChooseFile_Click(object sender, EventArgs e)
+        {
+            if (openFileDialog1.ShowDialog() == DialogResult.OK)
+            {
+                txtImage.Image = Image.FromFile(openFileDialog1.FileName);
+
+            }
+        }
+
+      
     }
 }

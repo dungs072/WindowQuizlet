@@ -36,13 +36,20 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
+            this.btnChooseFile = new System.Windows.Forms.Button();
+            this.txtImage = new DevExpress.XtraEditors.PictureEdit();
+            this.label4 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.txtImage.Properties)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
             // 
             this.panel1.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
+            this.panel1.Controls.Add(this.btnChooseFile);
+            this.panel1.Controls.Add(this.txtImage);
+            this.panel1.Controls.Add(this.label4);
             this.panel1.Controls.Add(this.btnUpdate);
             this.panel1.Controls.Add(this.btnCancel);
             this.panel1.Controls.Add(this.inputExplanation);
@@ -50,15 +57,15 @@
             this.panel1.Controls.Add(this.label3);
             this.panel1.Controls.Add(this.label2);
             this.panel1.Controls.Add(this.label1);
-            this.panel1.Location = new System.Drawing.Point(255, 49);
+            this.panel1.Location = new System.Drawing.Point(255, -7);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(584, 341);
+            this.panel1.Size = new System.Drawing.Size(584, 434);
             this.panel1.TabIndex = 1;
             // 
             // btnUpdate
             // 
             this.btnUpdate.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
-            this.btnUpdate.Location = new System.Drawing.Point(324, 263);
+            this.btnUpdate.Location = new System.Drawing.Point(326, 372);
             this.btnUpdate.Name = "btnUpdate";
             this.btnUpdate.Size = new System.Drawing.Size(135, 44);
             this.btnUpdate.TabIndex = 7;
@@ -69,7 +76,7 @@
             // btnCancel
             // 
             this.btnCancel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
-            this.btnCancel.Location = new System.Drawing.Point(109, 263);
+            this.btnCancel.Location = new System.Drawing.Point(111, 372);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(135, 44);
             this.btnCancel.TabIndex = 6;
@@ -119,6 +126,35 @@
             this.label1.TabIndex = 0;
             this.label1.Text = "Edit your term";
             // 
+            // btnChooseFile
+            // 
+            this.btnChooseFile.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.btnChooseFile.Location = new System.Drawing.Point(465, 278);
+            this.btnChooseFile.Name = "btnChooseFile";
+            this.btnChooseFile.Size = new System.Drawing.Size(107, 40);
+            this.btnChooseFile.TabIndex = 12;
+            this.btnChooseFile.Text = "Choose file";
+            this.btnChooseFile.UseVisualStyleBackColor = false;
+            this.btnChooseFile.Click += new System.EventHandler(this.btnChooseFile_Click);
+            // 
+            // txtImage
+            // 
+            this.txtImage.Location = new System.Drawing.Point(214, 252);
+            this.txtImage.Name = "txtImage";
+            this.txtImage.Properties.ShowCameraMenuItem = DevExpress.XtraEditors.Controls.CameraMenuItemVisibility.Auto;
+            this.txtImage.Properties.SizeMode = DevExpress.XtraEditors.Controls.PictureSizeMode.Zoom;
+            this.txtImage.Size = new System.Drawing.Size(245, 96);
+            this.txtImage.TabIndex = 11;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(107, 289);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(97, 19);
+            this.label4.TabIndex = 10;
+            this.label4.Text = "Explanation:";
+            // 
             // FrmEditTerm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 19F);
@@ -128,8 +164,10 @@
             this.Name = "FrmEditTerm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Edit terminology";
+            this.Load += new System.EventHandler(this.FrmEditTerm_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.txtImage.Properties)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -144,5 +182,8 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Button btnChooseFile;
+        private DevExpress.XtraEditors.PictureEdit txtImage;
+        private System.Windows.Forms.Label label4;
     }
 }
