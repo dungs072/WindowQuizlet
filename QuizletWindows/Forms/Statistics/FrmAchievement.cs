@@ -34,17 +34,23 @@ namespace QuizletWindows.Forms.Statistics
         private void LoadBadgeToPanel()
         {
             int count = 0;
+            badges = badges.OrderBy(a => a.NameBadge.Split(',')[1]).ToList();
+           
             foreach(var badge in badges) 
             {
                 count++;
                 if(count==badgePanel.ColumnCount)
                 {
-                    RowStyle newRowStyle = new RowStyle(SizeType.Absolute,20);
+                    RowStyle newRowStyle = new RowStyle(SizeType.Absolute,233);
                     badgePanel.RowStyles.Add(newRowStyle);
                 }
                 BadgeControl badgeControl = new BadgeControl();
+
+                badge.NameBadge = badge.NameBadge.Split(',')[0];
                 badgeControl.SetNameBadge(badge.NameBadge);
                 badgeControl.SetCheckBox(badge.IsAchieved);
+                badgeControl.SetImage(badge.Image);
+                badgeControl.SetDateText(badge.DateAchieved);
                 badgeControl.Dock = DockStyle.Fill;
                 badgePanel.AddControl(badgeControl);
                 

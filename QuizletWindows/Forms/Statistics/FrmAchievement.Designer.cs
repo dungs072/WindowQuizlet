@@ -29,8 +29,8 @@
         private void InitializeComponent()
         {
             this.panel1 = new System.Windows.Forms.Panel();
-            this.dateNavigator1 = new DevExpress.XtraScheduler.DateNavigator();
             this.label1 = new System.Windows.Forms.Label();
+            this.dateNavigator1 = new DevExpress.XtraScheduler.DateNavigator();
             this.panel2 = new System.Windows.Forms.Panel();
             this.label2 = new System.Windows.Forms.Label();
             this.badgePanel = new System.Windows.Forms.TableLayoutPanel();
@@ -51,6 +51,16 @@
             this.panel1.Size = new System.Drawing.Size(1111, 283);
             this.panel1.TabIndex = 0;
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(660, 111);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(191, 29);
+            this.label1.TabIndex = 1;
+            this.label1.Text = "Your attending";
+            // 
             // dateNavigator1
             // 
             this.dateNavigator1.AllowClickInactiveDays = false;
@@ -69,16 +79,6 @@
             this.dateNavigator1.Size = new System.Drawing.Size(632, 279);
             this.dateNavigator1.TabIndex = 0;
             this.dateNavigator1.CustomDrawDayNumberCell += new DevExpress.XtraEditors.Calendar.CustomDrawDayNumberCellEventHandler(this.dateNavigator1_CustomDrawDayNumberCell);
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(660, 111);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(191, 29);
-            this.label1.TabIndex = 1;
-            this.label1.Text = "Your attending";
             // 
             // panel2
             // 
@@ -115,7 +115,7 @@
             this.badgePanel.Location = new System.Drawing.Point(0, 326);
             this.badgePanel.Name = "badgePanel";
             this.badgePanel.RowCount = 1;
-            this.badgePanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.badgePanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 233F));
             this.badgePanel.Size = new System.Drawing.Size(1111, 175);
             this.badgePanel.TabIndex = 2;
             // 
