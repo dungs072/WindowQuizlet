@@ -58,5 +58,10 @@ namespace QuizletWindows.Forms
         {
             
         }
+
+        private void ShowPassword_CheckedChanged(object sender, EventArgs e)
+        {
+            txtPassword.UseSystemPasswordChar = !ShowPassword.Checked;
+        }
     }
 }

@@ -5,7 +5,9 @@ using QuizletWindows.Forms.Class;
 using QuizletWindows.Forms.Library;
 using QuizletWindows.Forms.Library.Objective;
 using QuizletWindows.Forms.Statistics;
+using QuizletWindows.Forms.User;
 using QuizletWindows.ViewModels;
+using QuizletWindows.ViewModels.User;
 using System;
 using System.Windows.Forms;
 using static DevExpress.XtraEditors.Mask.MaskSettings;
@@ -33,6 +35,11 @@ namespace QuizletWindows
             {
                 Notification.ShowNotification("Welcome my friend, a new day :)))");   
             }
+        }
+        public void SetNameAndTypeUser(string name, string type)
+        {
+            tsNameUser.Text = name;
+            tsTypeUser.Text = type;
         }
 
         private void btnBarLibrary_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
@@ -174,6 +181,20 @@ namespace QuizletWindows
         {
             CloseAllChildrenForm();
             ShowForm(typeof(FrmAchievement));
+        }
+
+        private async void btnBarUserInfor_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            UserViewModel user = await UserApi.Instance.GetProfile(Program.UserId);
+            FrmProfile profile = new FrmProfile();
+            profile.SetUserViewModel(user);
+            profile.ShowDialog();
+        }
+
+        private void btnBarChangePassword_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            FrmChangePass frmChangePass = new FrmChangePass();
+            frmChangePass.ShowDialog();
         }
     }
 }

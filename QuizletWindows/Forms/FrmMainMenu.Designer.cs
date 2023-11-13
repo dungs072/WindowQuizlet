@@ -31,7 +31,7 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmMainMenu));
             this.ribbonControl1 = new DevExpress.XtraBars.Ribbon.RibbonControl();
             this.btnBarUserInfor = new DevExpress.XtraBars.BarButtonItem();
-            this.barSubItem1 = new DevExpress.XtraBars.BarSubItem();
+            this.Functions = new DevExpress.XtraBars.BarSubItem();
             this.btnBarCreateNewTitle = new DevExpress.XtraBars.BarButtonItem();
             this.btnBarCreateNewClass = new DevExpress.XtraBars.BarButtonItem();
             this.btnBarLogOut = new DevExpress.XtraBars.BarButtonItem();
@@ -47,6 +47,7 @@
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
             this.tsTypeUser = new System.Windows.Forms.ToolStripLabel();
             this.tsNameUser = new System.Windows.Forms.ToolStripLabel();
+            this.btnBarChangePassword = new DevExpress.XtraBars.BarButtonItem();
             ((System.ComponentModel.ISupportInitialize)(this.ribbonControl1)).BeginInit();
             this.toolStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -54,12 +55,12 @@
             // ribbonControl1
             // 
             this.ribbonControl1.CaptionBarItemLinks.Add(this.btnBarUserInfor);
-            this.ribbonControl1.CaptionBarItemLinks.Add(this.barSubItem1);
+            this.ribbonControl1.CaptionBarItemLinks.Add(this.Functions);
             this.ribbonControl1.EmptyAreaImageOptions.ImagePadding = new System.Windows.Forms.Padding(67, 66, 67, 66);
             this.ribbonControl1.ExpandCollapseItem.Id = 0;
             this.ribbonControl1.Items.AddRange(new DevExpress.XtraBars.BarItem[] {
             this.btnBarUserInfor,
-            this.barSubItem1,
+            this.Functions,
             this.ribbonControl1.ExpandCollapseItem,
             this.btnBarStatistics,
             this.btnBarLibrary,
@@ -69,10 +70,11 @@
             this.btnBarCreateNewTitle,
             this.btnBarCreateNewClass,
             this.btnBarLogOut,
-            this.btnBarAchievement});
+            this.btnBarAchievement,
+            this.btnBarChangePassword});
             this.ribbonControl1.Location = new System.Drawing.Point(0, 0);
             this.ribbonControl1.Margin = new System.Windows.Forms.Padding(6);
-            this.ribbonControl1.MaxItemId = 16;
+            this.ribbonControl1.MaxItemId = 17;
             this.ribbonControl1.Name = "ribbonControl1";
             this.ribbonControl1.OptionsMenuMinWidth = 742;
             this.ribbonControl1.Pages.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPage[] {
@@ -81,23 +83,25 @@
             // 
             // btnBarUserInfor
             // 
-            this.btnBarUserInfor.Caption = "barButtonItem2";
+            this.btnBarUserInfor.Caption = "User";
             this.btnBarUserInfor.Id = 8;
             this.btnBarUserInfor.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnBarUserInfor.ImageOptions.Image")));
             this.btnBarUserInfor.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("btnBarUserInfor.ImageOptions.LargeImage")));
             this.btnBarUserInfor.Name = "btnBarUserInfor";
+            this.btnBarUserInfor.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnBarUserInfor_ItemClick);
             // 
-            // barSubItem1
+            // Functions
             // 
-            this.barSubItem1.Caption = "barSubItem1";
-            this.barSubItem1.Id = 9;
-            this.barSubItem1.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("barSubItem1.ImageOptions.Image")));
-            this.barSubItem1.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("barSubItem1.ImageOptions.LargeImage")));
-            this.barSubItem1.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
+            this.Functions.Caption = "barSubItem1";
+            this.Functions.Id = 9;
+            this.Functions.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("barSubItem1.ImageOptions.Image")));
+            this.Functions.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("barSubItem1.ImageOptions.LargeImage")));
+            this.Functions.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
             new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.btnBarCreateNewTitle, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph),
             new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.btnBarCreateNewClass, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph),
+            new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.btnBarChangePassword, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph),
             new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.btnBarLogOut, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph)});
-            this.barSubItem1.Name = "barSubItem1";
+            this.Functions.Name = "Functions";
             // 
             // btnBarCreateNewTitle
             // 
@@ -221,6 +225,14 @@
             this.tsNameUser.Size = new System.Drawing.Size(162, 25);
             this.tsNameUser.Text = "Nguyễn Hữu Dũng";
             // 
+            // btnBarChangePassword
+            // 
+            this.btnBarChangePassword.Caption = "Change password";
+            this.btnBarChangePassword.Id = 16;
+            this.btnBarChangePassword.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("barButtonItem2.ImageOptions.SvgImage")));
+            this.btnBarChangePassword.Name = "btnBarChangePassword";
+            this.btnBarChangePassword.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnBarChangePassword_ItemClick);
+            // 
             // FrmMainMenu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 19F);
@@ -258,11 +270,12 @@
         private System.Windows.Forms.ToolStrip toolStrip1;
         private System.Windows.Forms.ToolStripLabel tsNameUser;
         private System.Windows.Forms.ToolStripLabel tsTypeUser;
-        private DevExpress.XtraBars.BarSubItem barSubItem1;
+        private DevExpress.XtraBars.BarSubItem Functions;
         private DevExpress.XtraBars.BarButtonItem btnBarCreateNewTitle;
         private DevExpress.XtraBars.BarButtonItem btnBarCreateNewClass;
         private DevExpress.XtraBars.BarButtonItem btnBarLogOut;
         private DevExpress.XtraBars.BarButtonItem btnBarAchievement;
+        private DevExpress.XtraBars.BarButtonItem btnBarChangePassword;
     }
 }
 

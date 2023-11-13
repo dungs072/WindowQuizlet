@@ -7,6 +7,7 @@ using System.Net.Http.Json;
 using System.Threading.Tasks;
 using QuizletWindows.Forms;
 using Notification = QuizletWindows.Forms.Notification;
+using System.Net;
 
 namespace QuizletWindows.API
 {
@@ -28,6 +29,30 @@ namespace QuizletWindows.API
         {
             var user = client.GetFromJsonAsync<UserViewModel>(Api.UserUrl + $"/{username}/{password}");
             return user.Result;
+        }
+        public async Task<UserViewModel> GetProfile(int userId)
+        {
+            var user = await client.GetFromJsonAsync<UserViewModel>(Api.UserUrl + $"/{userId}");
+            return user;
+        }
+        public async Task<bool> UpdateProfile(UserViewModel user)
+        {
+            HttpResponseMessage response = await client.PutAsJsonAsync<UserViewModel>(Api.UserUrl, user);
+            if (response.IsSuccessStatusCode)
+            {
+                return true;
+            }
+            return false;
+        }
+        public async Task<bool> ChangePassword(ChangePasswordViewModel model)
+        {
+            HttpResponseMessage response = await client.PutAsJsonAsync<ChangePasswordViewModel>(Api.UserChangePassword, model);
+            if (response.StatusCode == HttpStatusCode.NoContent)
+            {
+                return false;
+            }
+            return true;
+
         }
     }
 }

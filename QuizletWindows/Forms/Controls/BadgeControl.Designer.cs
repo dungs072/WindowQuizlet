@@ -49,13 +49,13 @@
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(198, 233);
+            this.panel1.Size = new System.Drawing.Size(320, 233);
             this.panel1.TabIndex = 0;
             // 
             // txtImage
             // 
             this.txtImage.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.txtImage.Location = new System.Drawing.Point(42, 67);
+            this.txtImage.Location = new System.Drawing.Point(103, 67);
             this.txtImage.Name = "txtImage";
             this.txtImage.Properties.ShowCameraMenuItem = DevExpress.XtraEditors.Controls.CameraMenuItemVisibility.Auto;
             this.txtImage.Properties.SizeMode = DevExpress.XtraEditors.Controls.PictureSizeMode.Zoom;
@@ -65,7 +65,7 @@
             // txtDateAchievement
             // 
             this.txtDateAchievement.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.txtDateAchievement.Location = new System.Drawing.Point(19, 155);
+            this.txtDateAchievement.Location = new System.Drawing.Point(80, 155);
             this.txtDateAchievement.Name = "txtDateAchievement";
             this.txtDateAchievement.ReadOnly = true;
             this.txtDateAchievement.Size = new System.Drawing.Size(156, 27);
@@ -77,7 +77,7 @@
             this.checkBox.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.checkBox.AutoSize = true;
             this.checkBox.Enabled = false;
-            this.checkBox.Location = new System.Drawing.Point(32, 188);
+            this.checkBox.Location = new System.Drawing.Point(93, 188);
             this.checkBox.Name = "checkBox";
             this.checkBox.Size = new System.Drawing.Size(112, 23);
             this.checkBox.TabIndex = 5;
@@ -87,10 +87,10 @@
             // txtNameBox
             // 
             this.txtNameBox.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.txtNameBox.Location = new System.Drawing.Point(19, 33);
+            this.txtNameBox.Location = new System.Drawing.Point(39, 33);
             this.txtNameBox.Name = "txtNameBox";
             this.txtNameBox.ReadOnly = true;
-            this.txtNameBox.Size = new System.Drawing.Size(156, 27);
+            this.txtNameBox.Size = new System.Drawing.Size(241, 27);
             this.txtNameBox.TabIndex = 4;
             this.txtNameBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
@@ -101,7 +101,7 @@
             this.AutoSize = true;
             this.Controls.Add(this.panel1);
             this.Name = "BadgeControl";
-            this.Size = new System.Drawing.Size(198, 233);
+            this.Size = new System.Drawing.Size(320, 233);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.txtImage.Properties)).EndInit();

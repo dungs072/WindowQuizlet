@@ -6,6 +6,7 @@ namespace QuizletWindows.API
    {
         public static string UserUrl { get { return $"/api/User"; } }
         public static string UserUrlCheck { get { return UserUrl + "/check/"; } }
+        public static string UserChangePassword { get { return UserUrl + "/ChangePassword"; } }
 
         public static string TitleUrl { get { return $"/api/Title"; } }
         public static string TitleUrlCheck { get { return TitleUrl + "/check/"; } }

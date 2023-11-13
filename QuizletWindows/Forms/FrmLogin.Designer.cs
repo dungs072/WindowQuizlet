@@ -36,13 +36,16 @@
             this.txtPassword = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.txtGmail = new System.Windows.Forms.TextBox();
+            this.ShowPassword = new DevExpress.XtraEditors.CheckEdit();
             this.panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.ShowPassword.Properties)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
             // 
             this.panel1.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
+            this.panel1.Controls.Add(this.ShowPassword);
             this.panel1.Controls.Add(this.btnSignUp);
             this.panel1.Controls.Add(this.btnSignIn);
             this.panel1.Controls.Add(this.label3);
@@ -98,9 +101,9 @@
             // 
             this.txtPassword.Location = new System.Drawing.Point(290, 176);
             this.txtPassword.Name = "txtPassword";
-            this.txtPassword.PasswordChar = '*';
             this.txtPassword.Size = new System.Drawing.Size(267, 27);
             this.txtPassword.TabIndex = 3;
+            this.txtPassword.UseSystemPasswordChar = true;
             // 
             // label1
             // 
@@ -121,6 +124,15 @@
             this.txtGmail.Size = new System.Drawing.Size(267, 27);
             this.txtGmail.TabIndex = 1;
             // 
+            // ShowPassword
+            // 
+            this.ShowPassword.Location = new System.Drawing.Point(563, 175);
+            this.ShowPassword.Name = "ShowPassword";
+            this.ShowPassword.Properties.Caption = "show";
+            this.ShowPassword.Size = new System.Drawing.Size(112, 27);
+            this.ShowPassword.TabIndex = 8;
+            this.ShowPassword.CheckedChanged += new System.EventHandler(this.ShowPassword_CheckedChanged);
+            // 
             // FrmLogin
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 19F);
@@ -133,6 +145,7 @@
             this.Load += new System.EventHandler(this.FrmLogin_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.ShowPassword.Properties)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -147,5 +160,6 @@
         private System.Windows.Forms.TextBox txtGmail;
         private System.Windows.Forms.Button btnSignUp;
         private System.Windows.Forms.Button btnSignIn;
+        private DevExpress.XtraEditors.CheckEdit ShowPassword;
     }
 }
