@@ -50,6 +50,7 @@
             this.ModuleId = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ModuleName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Describe = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TermNumber = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ModuleGridView)).BeginInit();
@@ -223,7 +224,8 @@
             this.ModuleGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.ModuleId,
             this.ModuleName,
-            this.Describe});
+            this.Describe,
+            this.TermNumber});
             this.ModuleGridView.Dock = System.Windows.Forms.DockStyle.Fill;
             this.ModuleGridView.Location = new System.Drawing.Point(0, 123);
             this.ModuleGridView.MultiSelect = false;
@@ -255,6 +257,13 @@
             this.Describe.MinimumWidth = 8;
             this.Describe.Name = "Describe";
             this.Describe.ReadOnly = true;
+            // 
+            // TermNumber
+            // 
+            this.TermNumber.HeaderText = "Term Number";
+            this.TermNumber.MinimumWidth = 8;
+            this.TermNumber.Name = "TermNumber";
+            this.TermNumber.ReadOnly = true;
             // 
             // FrmYourModules
             // 
@@ -297,9 +306,10 @@
         private System.Windows.Forms.Panel panel1;
         private DevExpress.XtraBars.BarButtonItem btnBarBack;
         private DevExpress.XtraBars.BarButtonItem btnBarAdd;
+        private System.Windows.Forms.Label TitleNameLabel;
         private System.Windows.Forms.DataGridViewTextBoxColumn ModuleId;
         private System.Windows.Forms.DataGridViewTextBoxColumn ModuleName;
         private System.Windows.Forms.DataGridViewTextBoxColumn Describe;
-        private System.Windows.Forms.Label TitleNameLabel;
+        private System.Windows.Forms.DataGridViewTextBoxColumn TermNumber;
     }
 }

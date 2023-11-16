@@ -65,14 +65,15 @@ namespace QuizletWindows.Forms.Library
             {
                 fireBaseGoogle.DeleteTheOldImage(imageUrl);
             }
-            byte[] imageBytes = fireBaseGoogle.ImageToByteArray(txtImage.Image);
-            var task = fireBaseGoogle.FirebaseStorage
-                .Child("images")
-                .Child($"image_{DateTime.Now.Ticks}.png")
-                .PutAsync(new MemoryStream(imageBytes));
+            
+            //byte[] imageBytes = fireBaseGoogle.ImageToByteArray(txtImage.Image);
+            //var task = fireBaseGoogle.FirebaseStorage
+            //    .Child("images")
+            //    .Child($"image_{DateTime.Now.Ticks}.png")
+            //    .PutAsync(new MemoryStream(imageBytes));
 
-            var downloadUrl = await task;
-            viewModel.Image = downloadUrl;
+            //var downloadUrl = await task;
+            viewModel.Image = await fireBaseGoogle.StoreImage("images",txtImage.Image);
             var canUpdate = await TerminologyApi.Instance.UpdateTerm(viewModel);
             if (!canUpdate)
             {

@@ -10,9 +10,11 @@ namespace QuizletWindows.Forms.User
     {
         private List<string> types = new List<string>() { "Student","Teacher"};
         private UserViewModel viewModel;
+        private FireBaseGoogle fireBaseGoogle;
         public FrmProfile()
         {
             InitializeComponent();
+            fireBaseGoogle = new FireBaseGoogle();
         }
         public void SetUserViewModel(UserViewModel viewModel)
         {
@@ -24,7 +26,17 @@ namespace QuizletWindows.Forms.User
             txtFirstName.Text = viewModel.FirstName;
             txtLastName.Text = viewModel.LastName;
             txtGmail.Text = viewModel.Gmail;
-            if(viewModel.TypeAccount=="Admin")
+            if(viewModel.Image!=null)
+            {
+                avartarPicture.Image = System.Drawing.Image.FromStream(new System.Net.WebClient().OpenRead(viewModel.Image));
+                btnDeleteImage.Enabled = true;
+            }
+            else
+            {
+                btnDeleteImage.Enabled = false;
+            }
+           
+            if (viewModel.TypeAccount=="Admin")
             {
                 cmbTypeUser.DataSource = viewModel.TypeAccount;
             }
@@ -66,6 +78,42 @@ namespace QuizletWindows.Forms.User
             else
             {
                 Notification.ShowNotification("Update failed. Please fix it");
+            }
+        }
+
+        private async void btnUploadImage_Click(object sender, EventArgs e)
+        {
+            if(avartarPicture.Image!=null)
+            {
+                if(viewModel.Image!=null)
+                {
+                    fireBaseGoogle.DeleteTheOldImage(viewModel.Image);
+                }
+                var imageUrl = await fireBaseGoogle.StoreImage("users", avartarPicture.Image);
+                viewModel.Image = imageUrl;
+                var state = await UserApi.Instance.UpdateProfile(viewModel);
+                if(state)
+                {
+                    Notification.ShowNotification("Upload avatar successfully");
+                    avartarPicture.Image = System.Drawing.Image.FromStream(new System.Net.WebClient().OpenRead(viewModel.Image));
+                }
+                else
+                {
+                    Notification.ShowNotification("Upload avatar failed");
+                }
+                
+
+            }
+        }
+
+        private void btnDeleteImage_Click(object sender, EventArgs e)
+        {
+            if (avartarPicture.Image != null)
+            {
+                if (viewModel.Image != null)
+                {
+                    fireBaseGoogle.DeleteTheOldImage(viewModel.Image);
+                }
             }
         }
     }

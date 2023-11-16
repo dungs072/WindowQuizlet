@@ -46,9 +46,11 @@ namespace QuizletWindows.Forms.Library
             DataGridViewColumn moduleNameColumn = ModuleGridView.Columns["ModuleName"];
             DataGridViewColumn describeColumn = ModuleGridView.Columns["Describe"];
             DataGridViewColumn moduleIdColumn = ModuleGridView.Columns["ModuleId"];
+            DataGridViewColumn termNumberColumn = ModuleGridView.Columns["TermNumber"];
             moduleNameColumn.DataPropertyName = "LearningModuleName";
             describeColumn.DataPropertyName = "Describe";
             moduleIdColumn.DataPropertyName = "LearningModuleId";
+            termNumberColumn.DataPropertyName = "NumberTerms";
             moduleNameColumn.Width = 500;
             ModuleGridView.ColumnHeadersDefaultCellStyle.Font = new Font(ModuleGridView.ColumnHeadersDefaultCellStyle.Font, FontStyle.Bold);
             ModuleGridView.Refresh();

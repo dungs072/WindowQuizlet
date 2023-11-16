@@ -22,6 +22,7 @@ namespace QuizletWindows.ViewModels.User
         [Display(Name = "Type account")]
         [Required(ErrorMessage = "Type account is required")]
         public string TypeAccount { get; set; }
+        public string Image { get; set; }
         [Required]
         [DataType(DataType.Password)]
         public string Password { get; set; }

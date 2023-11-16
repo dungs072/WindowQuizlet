@@ -1,4 +1,5 @@
-﻿using Firebase.Auth;
+﻿using DevExpress.Drawing;
+using Firebase.Auth;
 using Firebase.Storage;
 using System;
 using System.Collections.Generic;
@@ -43,9 +44,27 @@ namespace QuizletWindows.API
                 return ms.ToArray();
             }
         }
+        public async Task<string> StoreImage(string path, Image image)
+        {
+            if (FirebaseStorage == null)
+            {
+                await Initial();
+            }
+            byte[] imageBytes = ImageToByteArray(image);
+            var task = FirebaseStorage
+                .Child(path)
+                .Child($"image_{DateTime.Now.Ticks}.png")
+                .PutAsync(new MemoryStream(imageBytes));
+
+           return await task;
+        }
 
         public async void DeleteTheOldImage(string image)
         {
+            if(FirebaseStorage==null)
+            {
+                await Initial();
+            }
             string fileNameDelete = ExtractFileNameFromUrl(image);
             string deletePath = $"images/{fileNameDelete}";
             await FirebaseStorage.Child(deletePath).DeleteAsync();

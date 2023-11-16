@@ -26,6 +26,7 @@ namespace QuizletWindows.Forms.Library
         public static string DescribeNameDisplay { get; set; }
 
         private int currentTermIndex = 0;
+        private int previousTermIndex = -1;
         public FrmTerms()
         {
             InitializeComponent();
@@ -60,10 +61,12 @@ namespace QuizletWindows.Forms.Library
             }
             else
             {
+                if (previousTermIndex == currentIndex) { return; }
                 string imageUrl = term.Image;
                 imageDisplay.Image = System.Drawing.Image.FromStream(new System.Net.WebClient().OpenRead(imageUrl));
                 imageDisplay.Properties.SizeMode = DevExpress.XtraEditors.Controls.PictureSizeMode.Zoom;
             }
+            previousTermIndex = currentIndex;
             
            
         }
@@ -76,8 +79,6 @@ namespace QuizletWindows.Forms.Library
             terms = TerminologyApi.Instance.GetTermByLearningModuleId(ModuleId);
             termGridView.AutoGenerateColumns = false;
             termGridView.DataSource = terms;
-
-
         }
         private void InitialSetUp()
         {
@@ -229,13 +230,17 @@ namespace QuizletWindows.Forms.Library
         private void btnNext_Click(object sender, EventArgs e)
         {
             currentTermIndex = Math.Min(currentTermIndex+1,terms.Count-1);
+            
             LoadCurrentTermName(currentTermIndex);
+            previousTermIndex = -1;
+
         }
 
         private void btnPrevious_Click(object sender, EventArgs e)
         {
             currentTermIndex = Math.Max(currentTermIndex - 1, 0);
             LoadCurrentTermName(currentTermIndex);
+            previousTermIndex = -1;
         }
     }
 }
