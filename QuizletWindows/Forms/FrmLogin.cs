@@ -1,5 +1,6 @@
 ﻿using DevExpress.XtraEditors;
 using QuizletWindows.API;
+using QuizletWindows.Forms.User;
 using QuizletWindows.ViewModels.User;
 using System;
 using System.Drawing;
@@ -40,7 +41,11 @@ namespace QuizletWindows.Forms
                 return;
             }
             UserViewModel user =  UserApi.Instance.FindAccount(txtGmail.Text.Trim(), txtPassword.Text.Trim());
-            if (user!=null&&user.UserId!=0)
+            if(user!=null&&user.UserId==123)
+            {
+                Notification.ShowError("your account is being blocked. Please contact to admin");
+            }
+            else if (user!=null&&user.UserId!=0)
             {
                 Program.UserId = user.UserId;
                 Program.UserName = user.LastName + " " + user.FirstName;
@@ -62,6 +67,12 @@ namespace QuizletWindows.Forms
         private void ShowPassword_CheckedChanged(object sender, EventArgs e)
         {
             txtPassword.UseSystemPasswordChar = !ShowPassword.Checked;
+        }
+
+        private void forgotPasswordLink_Click(object sender, EventArgs e)
+        {
+            FrmForgotPassword frm = new FrmForgotPassword();
+            frm.ShowDialog();
         }
     }
 }

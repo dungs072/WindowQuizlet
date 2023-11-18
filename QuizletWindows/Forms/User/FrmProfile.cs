@@ -1,8 +1,11 @@
-﻿using DevExpress.XtraEditors;
+﻿using DevExpress.Drawing;
+using DevExpress.XtraEditors;
 using QuizletWindows.API;
 using QuizletWindows.ViewModels.User;
 using System;
 using System.Collections.Generic;
+using System.Drawing;
+using System.Windows.Forms;
 
 namespace QuizletWindows.Forms.User
 {
@@ -11,10 +14,13 @@ namespace QuizletWindows.Forms.User
         private List<string> types = new List<string>() { "Student","Teacher"};
         private UserViewModel viewModel;
         private FireBaseGoogle fireBaseGoogle;
+        private OpenFileDialog openFileDialog1;
         public FrmProfile()
         {
             InitializeComponent();
             fireBaseGoogle = new FireBaseGoogle();
+            openFileDialog1 = new OpenFileDialog();
+            openFileDialog1.Filter = "Image Files|*.jpg;*.jpeg;*.png;*.gif;*.bmp|All files|*.*";
         }
         public void SetUserViewModel(UserViewModel viewModel)
         {
@@ -68,6 +74,15 @@ namespace QuizletWindows.Forms.User
             viewModel.LastName = txtLastName.Text.Trim();
             viewModel.Gmail = txtGmail.Text.Trim();
             viewModel.TypeAccount = cmbTypeUser.SelectedValue.ToString();
+            if (avartarPicture.Image != null)
+            {
+                if (viewModel.Image != null)
+                {
+                    fireBaseGoogle.DeleteTheOldImage(viewModel.Image,"users");
+                }
+                var imageUrl = await fireBaseGoogle.StoreImage("users", avartarPicture.Image);
+                viewModel.Image = imageUrl;
+            }
             var state = await UserApi.Instance.UpdateProfile(viewModel);
             if(state)
             {
@@ -81,38 +96,32 @@ namespace QuizletWindows.Forms.User
             }
         }
 
-        private async void btnUploadImage_Click(object sender, EventArgs e)
+        private void btnUploadImage_Click(object sender, EventArgs e)
         {
-            if(avartarPicture.Image!=null)
+            if (openFileDialog1.ShowDialog() == DialogResult.OK)
             {
-                if(viewModel.Image!=null)
-                {
-                    fireBaseGoogle.DeleteTheOldImage(viewModel.Image);
-                }
-                var imageUrl = await fireBaseGoogle.StoreImage("users", avartarPicture.Image);
-                viewModel.Image = imageUrl;
-                var state = await UserApi.Instance.UpdateProfile(viewModel);
-                if(state)
-                {
-                    Notification.ShowNotification("Upload avatar successfully");
-                    avartarPicture.Image = System.Drawing.Image.FromStream(new System.Net.WebClient().OpenRead(viewModel.Image));
-                }
-                else
-                {
-                    Notification.ShowNotification("Upload avatar failed");
-                }
-                
-
+                avartarPicture.Image = Image.FromFile(openFileDialog1.FileName);
             }
         }
 
-        private void btnDeleteImage_Click(object sender, EventArgs e)
+        private async void btnDeleteImage_Click(object sender, EventArgs e)
         {
             if (avartarPicture.Image != null)
             {
                 if (viewModel.Image != null)
                 {
-                    fireBaseGoogle.DeleteTheOldImage(viewModel.Image);
+                    fireBaseGoogle.DeleteTheOldImage(viewModel.Image,"users");
+                    viewModel.Image = null;
+                    var state = await UserApi.Instance.UpdateProfile(viewModel);
+                    if(state)
+                    {
+                        Notification.ShowNotification("Delete your avatar successfully");
+                        avartarPicture.Image = null;
+                    }
+                    else
+                    {
+                        Notification.ShowNotification("Delete your avatar failed");
+                    }
                 }
             }
         }

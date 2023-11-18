@@ -63,7 +63,7 @@ namespace QuizletWindows.Forms.Library
             viewModel.Explaination = inputExplanation.Text.Trim();
             if(imageUrl!=null)
             {
-                fireBaseGoogle.DeleteTheOldImage(imageUrl);
+                fireBaseGoogle.DeleteTheOldImage(imageUrl,"images");
             }
             
             //byte[] imageBytes = fireBaseGoogle.ImageToByteArray(txtImage.Image);

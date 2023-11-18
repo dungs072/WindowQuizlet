@@ -518,6 +518,12 @@
     <Compile Include="Forms\User\FrmChangePass.Designer.cs">
       <DependentUpon>FrmChangePass.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\User\FrmForgotPassword.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\User\FrmForgotPassword.Designer.cs">
+      <DependentUpon>FrmForgotPassword.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\User\FrmProfile.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -534,6 +540,7 @@
     <Compile Include="ViewModels\Terminologies\TermViewModel.cs" />
     <Compile Include="ViewModels\Terminologies\TitleViewModel.cs" />
     <Compile Include="ViewModels\User\ChangePasswordViewModel.cs" />
+    <Compile Include="ViewModels\User\ForgetPasswordViewModel.cs" />
     <Compile Include="ViewModels\User\UserViewModel.cs" />
     <EmbeddedResource Include="Forms\Class\FrmAddYourOwnClass.resx">
       <DependentUpon>FrmAddYourOwnClass.cs</DependentUpon>
@@ -618,6 +625,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\User\FrmChangePass.resx">
       <DependentUpon>FrmChangePass.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\User\FrmForgotPassword.resx">
+      <DependentUpon>FrmForgotPassword.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\User\FrmProfile.resx">
       <DependentUpon>FrmProfile.cs</DependentUpon>

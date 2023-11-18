@@ -59,14 +59,14 @@ namespace QuizletWindows.API
            return await task;
         }
 
-        public async void DeleteTheOldImage(string image)
+        public async void DeleteTheOldImage(string image,string path)
         {
             if(FirebaseStorage==null)
             {
                 await Initial();
             }
             string fileNameDelete = ExtractFileNameFromUrl(image);
-            string deletePath = $"images/{fileNameDelete}";
+            string deletePath = $"{path}/{fileNameDelete}";
             await FirebaseStorage.Child(deletePath).DeleteAsync();
         }
 

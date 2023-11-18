@@ -54,5 +54,14 @@ namespace QuizletWindows.API
             return true;
 
         }
+        public async Task<bool> HandleForgetPassword(ForgetPasswordViewModel model)
+        {
+            HttpResponseMessage response = await client.PutAsJsonAsync<ForgetPasswordViewModel>(Api.UserForgetPassword, model);
+            if (response.StatusCode == HttpStatusCode.NoContent)
+            {
+                return false;
+            }
+            return true;
+        }
     }
 }
