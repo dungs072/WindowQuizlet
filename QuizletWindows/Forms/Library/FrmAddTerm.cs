@@ -41,14 +41,18 @@ namespace QuizletWindows.Forms.Library
             term.TermId = 0;
             term.TermName = inputTermName.Text.Trim();
             term.Explaination = inputTermExplanation.Text.Trim();
-            byte[] imageBytes = fireBaseGoogle.ImageToByteArray(txtImage.Image);
-            var task = fireBaseGoogle.FirebaseStorage
-                .Child("images")
-                .Child($"image_{DateTime.Now.Ticks}.png")
-                .PutAsync(new MemoryStream(imageBytes));
+            if(txtImage.Image!=null)
+            {
+                byte[] imageBytes = fireBaseGoogle.ImageToByteArray(txtImage.Image);
+                var task = fireBaseGoogle.FirebaseStorage
+                    .Child("images")
+                    .Child($"image_{DateTime.Now.Ticks}.png")
+                    .PutAsync(new MemoryStream(imageBytes));
 
-            var downloadUrl = await task;
-            term.Image = downloadUrl;
+                var downloadUrl = await task;
+                term.Image = downloadUrl;
+            }
+           
             var canCreate = await TerminologyApi.Instance.CreateTerm(term);
             if (!canCreate)
             {

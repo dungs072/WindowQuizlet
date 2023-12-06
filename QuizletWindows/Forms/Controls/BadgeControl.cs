@@ -36,23 +36,24 @@ namespace QuizletWindows.Forms.Controls
         {
             try
             {
-                using (var webClient = new WebClient())
-                {
-                    var stream = webClient.OpenRead(image);
+                txtImage.Image = System.Drawing.Image.FromStream(new System.Net.WebClient().OpenRead(image));
+                txtImage.Properties.SizeMode = DevExpress.XtraEditors.Controls.PictureSizeMode.Zoom;
+                //using (var webClient = new WebClient())
+                //{
+                //    var stream = webClient.OpenRead(image);
 
-                    if (stream != null)
-                    {
-                        // Load SVG using SvgDocument
-                        var svgDocument = SvgDocument.Open<SvgDocument>(stream);
+            //    if (stream != null)
+            //    {
+            //        var svgDocument = SvgDocument.Open<SvgDocument>(stream);
 
-                        // Render SVG to a Bitmap
-                        var bitmap = svgDocument.Draw();
+            //        // Render SVG to a Bitmap
+            //        var bitmap = svgDocument.Draw();
 
-                        txtImage.Image = bitmap;
-                        // Close the stream
-                        stream.Close();
-                    }
-                }
+            //        txtImage.Image = bitmap;
+            //        // Close the stream
+            //        stream.Close();
+            //    }
+            //}
             }
             catch (Exception ex)
             {

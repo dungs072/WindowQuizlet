@@ -37,7 +37,7 @@ namespace QuizletWindows.API
         public static string ClassJoin { get { return ClassUrl + "/JoinClass"; } }
 
         public static string AchivementUrl { get { return $"/api/Achivement"; } }
-        public static string AchivementUser { get { return AchivementUrl + "/UserAchieve"; } }
+        public static string AchivementUser { get { return TermUrl + "/UserAchieve"; } }
         public static string AchieveStatistics { get { return AchivementUrl + "/AchieveStatistics"; } }
         public static string SequenceCalender { get { return AchivementUrl + "/GetSequenceCalender"; } }
         public static string MarkAttendance { get { return AchivementUrl + "/MarkAttendance"; } }

@@ -27,6 +27,7 @@ namespace QuizletWindows.Forms.Statistics
         }
         private void FrmAchievement_Load(object sender, EventArgs e)
         {
+            dateNavigator1.DateTime = DateTime.Now;
             sequenceDates = AchivementApi.Instance.GetSequenceDates(Program.UserId);
             badges = AchivementApi.Instance.GetBadges(Program.UserId);
             LoadBadgeToPanel();

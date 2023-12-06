@@ -68,9 +68,7 @@
             this.dateNavigator1.CalendarAppearance.DayCellSpecial.Options.UseFont = true;
             this.dateNavigator1.CalendarTimeProperties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.dateNavigator1.DateTime = new System.DateTime(2023, 11, 7, 0, 0, 0, 0);
             this.dateNavigator1.Dock = System.Windows.Forms.DockStyle.Left;
-            this.dateNavigator1.EditValue = new System.DateTime(2023, 11, 7, 0, 0, 0, 0);
             this.dateNavigator1.FirstDayOfWeek = System.DayOfWeek.Sunday;
             this.dateNavigator1.HighlightSelection = false;
             this.dateNavigator1.HighlightTodayCell = DevExpress.Utils.DefaultBoolean.False;
@@ -115,7 +113,7 @@
             this.badgePanel.Location = new System.Drawing.Point(0, 326);
             this.badgePanel.Name = "badgePanel";
             this.badgePanel.RowCount = 1;
-            this.badgePanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 233F));
+            this.badgePanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 236F));
             this.badgePanel.Size = new System.Drawing.Size(1111, 175);
             this.badgePanel.TabIndex = 2;
             // 

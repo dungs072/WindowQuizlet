@@ -55,9 +55,18 @@ namespace QuizletWindows.API
             }
             
         }
-        public async Task DeleteTitle(int TitleId)
+        public async Task<bool> DeleteTitle(int TitleId)
         {
-            await client.DeleteAsync(Api.TitleUrl + $"/{TitleId}");
+            HttpResponseMessage response = await client.DeleteAsync(Api.TitleUrl + $"/{TitleId}");
+            if (response.StatusCode == HttpStatusCode.NoContent)
+            {
+                return false;
+            }
+            else
+            {
+                return true;
+            }
+            
         }
         #endregion
 

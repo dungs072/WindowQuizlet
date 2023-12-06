@@ -29,15 +29,14 @@
         private void InitializeComponent()
         {
             this.panel1 = new System.Windows.Forms.Panel();
+            this.forgotPasswordLink = new DevExpress.XtraEditors.HyperlinkLabelControl();
             this.ShowPassword = new DevExpress.XtraEditors.CheckEdit();
-            this.btnSignUp = new System.Windows.Forms.Button();
             this.btnSignIn = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.txtPassword = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.txtGmail = new System.Windows.Forms.TextBox();
-            this.forgotPasswordLink = new DevExpress.XtraEditors.HyperlinkLabelControl();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ShowPassword.Properties)).BeginInit();
             this.SuspendLayout();
@@ -49,7 +48,6 @@
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panel1.Controls.Add(this.forgotPasswordLink);
             this.panel1.Controls.Add(this.ShowPassword);
-            this.panel1.Controls.Add(this.btnSignUp);
             this.panel1.Controls.Add(this.btnSignIn);
             this.panel1.Controls.Add(this.label3);
             this.panel1.Controls.Add(this.label2);
@@ -61,6 +59,18 @@
             this.panel1.Size = new System.Drawing.Size(768, 299);
             this.panel1.TabIndex = 0;
             // 
+            // forgotPasswordLink
+            // 
+            this.forgotPasswordLink.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.forgotPasswordLink.Appearance.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
+            this.forgotPasswordLink.Appearance.Options.UseBackColor = true;
+            this.forgotPasswordLink.Location = new System.Drawing.Point(319, 274);
+            this.forgotPasswordLink.Name = "forgotPasswordLink";
+            this.forgotPasswordLink.Size = new System.Drawing.Size(118, 19);
+            this.forgotPasswordLink.TabIndex = 9;
+            this.forgotPasswordLink.Text = "Forgot password";
+            this.forgotPasswordLink.Click += new System.EventHandler(this.forgotPasswordLink_Click);
+            // 
             // ShowPassword
             // 
             this.ShowPassword.Location = new System.Drawing.Point(533, 173);
@@ -70,20 +80,10 @@
             this.ShowPassword.TabIndex = 8;
             this.ShowPassword.CheckedChanged += new System.EventHandler(this.ShowPassword_CheckedChanged);
             // 
-            // btnSignUp
-            // 
-            this.btnSignUp.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
-            this.btnSignUp.Location = new System.Drawing.Point(202, 229);
-            this.btnSignUp.Name = "btnSignUp";
-            this.btnSignUp.Size = new System.Drawing.Size(119, 38);
-            this.btnSignUp.TabIndex = 7;
-            this.btnSignUp.Text = "Sign up";
-            this.btnSignUp.UseVisualStyleBackColor = false;
-            // 
             // btnSignIn
             // 
             this.btnSignIn.BackColor = System.Drawing.Color.Lime;
-            this.btnSignIn.Location = new System.Drawing.Point(437, 229);
+            this.btnSignIn.Location = new System.Drawing.Point(319, 219);
             this.btnSignIn.Name = "btnSignIn";
             this.btnSignIn.Size = new System.Drawing.Size(119, 38);
             this.btnSignIn.TabIndex = 6;
@@ -136,18 +136,6 @@
             this.txtGmail.Size = new System.Drawing.Size(267, 27);
             this.txtGmail.TabIndex = 1;
             // 
-            // forgotPasswordLink
-            // 
-            this.forgotPasswordLink.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.forgotPasswordLink.Appearance.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
-            this.forgotPasswordLink.Appearance.Options.UseBackColor = true;
-            this.forgotPasswordLink.Location = new System.Drawing.Point(319, 274);
-            this.forgotPasswordLink.Name = "forgotPasswordLink";
-            this.forgotPasswordLink.Size = new System.Drawing.Size(118, 19);
-            this.forgotPasswordLink.TabIndex = 9;
-            this.forgotPasswordLink.Text = "Forgot password";
-            this.forgotPasswordLink.Click += new System.EventHandler(this.forgotPasswordLink_Click);
-            // 
             // FrmLogin
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 19F);
@@ -173,7 +161,6 @@
         private System.Windows.Forms.TextBox txtPassword;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox txtGmail;
-        private System.Windows.Forms.Button btnSignUp;
         private System.Windows.Forms.Button btnSignIn;
         private DevExpress.XtraEditors.CheckEdit ShowPassword;
         private DevExpress.XtraEditors.HyperlinkLabelControl forgotPasswordLink;

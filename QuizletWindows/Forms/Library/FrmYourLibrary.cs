@@ -120,8 +120,16 @@ namespace QuizletWindows.Forms.Library
             if(result==DialogResult.OK)
             {
                 int titleId = GetTitleId();
-                await TerminologyApi.Instance.DeleteTitle(titleId);
-                Notification.ShowNotification("Delete this title successfully");
+                var r  = await TerminologyApi.Instance.DeleteTitle(titleId);
+                if(r)
+                {
+                    Notification.ShowNotification("Delete this title successfully");
+                }else
+                {
+                    Notification.ShowError("Delete this title failed Because there are modules in it");
+                }
+
+                
                 FetchDataTable();
             }
             
