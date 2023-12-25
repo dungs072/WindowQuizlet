@@ -51,14 +51,15 @@
             this.barManager1 = new DevExpress.XtraBars.BarManager(this.components);
             this.bar2 = new DevExpress.XtraBars.Bar();
             this.btnBarBack = new DevExpress.XtraBars.BarButtonItem();
-            this.barDockControlTop = new DevExpress.XtraBars.BarDockControl();
-            this.barDockControlBottom = new DevExpress.XtraBars.BarDockControl();
-            this.barDockControlLeft = new DevExpress.XtraBars.BarDockControl();
-            this.barDockControlRight = new DevExpress.XtraBars.BarDockControl();
             this.btnBarAddModule = new DevExpress.XtraBars.BarButtonItem();
             this.btnBarRemoveModule = new DevExpress.XtraBars.BarButtonItem();
             this.btnBarAddParticipant = new DevExpress.XtraBars.BarButtonItem();
             this.btnBarRemoveParticipant = new DevExpress.XtraBars.BarButtonItem();
+            this.barDockControlTop = new DevExpress.XtraBars.BarDockControl();
+            this.barDockControlBottom = new DevExpress.XtraBars.BarDockControl();
+            this.barDockControlLeft = new DevExpress.XtraBars.BarDockControl();
+            this.barDockControlRight = new DevExpress.XtraBars.BarDockControl();
+            this.btnBarPending = new DevExpress.XtraBars.BarButtonItem();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.LearningModuleGridView)).BeginInit();
             this.panel3.SuspendLayout();
@@ -254,9 +255,10 @@
             this.btnBarAddModule,
             this.btnBarRemoveModule,
             this.btnBarAddParticipant,
-            this.btnBarRemoveParticipant});
+            this.btnBarRemoveParticipant,
+            this.btnBarPending});
             this.barManager1.MainMenu = this.bar2;
-            this.barManager1.MaxItemId = 5;
+            this.barManager1.MaxItemId = 6;
             // 
             // bar2
             // 
@@ -270,7 +272,8 @@
             new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.btnBarAddModule, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph),
             new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.btnBarRemoveModule, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph),
             new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.btnBarAddParticipant, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph),
-            new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.btnBarRemoveParticipant, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph)});
+            new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.btnBarRemoveParticipant, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph),
+            new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.btnBarPending, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph)});
             this.bar2.OptionsBar.MultiLine = true;
             this.bar2.OptionsBar.UseWholeRow = true;
             this.bar2.Text = "Main menu";
@@ -279,9 +282,41 @@
             // 
             this.btnBarBack.Caption = "Back";
             this.btnBarBack.Id = 0;
-            this.btnBarBack.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("barButtonItem1.ImageOptions.SvgImage")));
+            this.btnBarBack.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("btnBarBack.ImageOptions.SvgImage")));
             this.btnBarBack.Name = "btnBarBack";
             this.btnBarBack.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnBarBack_ItemClick);
+            // 
+            // btnBarAddModule
+            // 
+            this.btnBarAddModule.Caption = "Add Module";
+            this.btnBarAddModule.Id = 1;
+            this.btnBarAddModule.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("btnBarAddModule.ImageOptions.SvgImage")));
+            this.btnBarAddModule.Name = "btnBarAddModule";
+            this.btnBarAddModule.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnBarAddModule_ItemClick);
+            // 
+            // btnBarRemoveModule
+            // 
+            this.btnBarRemoveModule.Caption = "Remove Module";
+            this.btnBarRemoveModule.Id = 2;
+            this.btnBarRemoveModule.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("btnBarRemoveModule.ImageOptions.SvgImage")));
+            this.btnBarRemoveModule.Name = "btnBarRemoveModule";
+            this.btnBarRemoveModule.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnBarRemoveModule_ItemClick);
+            // 
+            // btnBarAddParticipant
+            // 
+            this.btnBarAddParticipant.Caption = "Add Participant";
+            this.btnBarAddParticipant.Id = 3;
+            this.btnBarAddParticipant.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("btnBarAddParticipant.ImageOptions.SvgImage")));
+            this.btnBarAddParticipant.Name = "btnBarAddParticipant";
+            this.btnBarAddParticipant.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnBarAddParticipant_ItemClick);
+            // 
+            // btnBarRemoveParticipant
+            // 
+            this.btnBarRemoveParticipant.Caption = "Remove Participant";
+            this.btnBarRemoveParticipant.Id = 4;
+            this.btnBarRemoveParticipant.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("btnBarRemoveParticipant.ImageOptions.SvgImage")));
+            this.btnBarRemoveParticipant.Name = "btnBarRemoveParticipant";
+            this.btnBarRemoveParticipant.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnBarRemoveParticipant_ItemClick);
             // 
             // barDockControlTop
             // 
@@ -315,37 +350,13 @@
             this.barDockControlRight.Manager = this.barManager1;
             this.barDockControlRight.Size = new System.Drawing.Size(0, 439);
             // 
-            // btnBarAddModule
+            // btnBarPending
             // 
-            this.btnBarAddModule.Caption = "Add Module";
-            this.btnBarAddModule.Id = 1;
-            this.btnBarAddModule.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("barButtonItem1.ImageOptions.SvgImage1")));
-            this.btnBarAddModule.Name = "btnBarAddModule";
-            this.btnBarAddModule.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnBarAddModule_ItemClick);
-            // 
-            // btnBarRemoveModule
-            // 
-            this.btnBarRemoveModule.Caption = "Remove Module";
-            this.btnBarRemoveModule.Id = 2;
-            this.btnBarRemoveModule.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("barButtonItem2.ImageOptions.SvgImage")));
-            this.btnBarRemoveModule.Name = "btnBarRemoveModule";
-            this.btnBarRemoveModule.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnBarRemoveModule_ItemClick);
-            // 
-            // btnBarAddParticipant
-            // 
-            this.btnBarAddParticipant.Caption = "Add Participant";
-            this.btnBarAddParticipant.Id = 3;
-            this.btnBarAddParticipant.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("barButtonItem3.ImageOptions.SvgImage")));
-            this.btnBarAddParticipant.Name = "btnBarAddParticipant";
-            this.btnBarAddParticipant.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnBarAddParticipant_ItemClick);
-            // 
-            // btnBarRemoveParticipant
-            // 
-            this.btnBarRemoveParticipant.Caption = "Remove Participant";
-            this.btnBarRemoveParticipant.Id = 4;
-            this.btnBarRemoveParticipant.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("barButtonItem4.ImageOptions.SvgImage")));
-            this.btnBarRemoveParticipant.Name = "btnBarRemoveParticipant";
-            this.btnBarRemoveParticipant.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnBarRemoveParticipant_ItemClick);
+            this.btnBarPending.Caption = "Pending Participant";
+            this.btnBarPending.Id = 5;
+            this.btnBarPending.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("barButtonItem1.ImageOptions.SvgImage")));
+            this.btnBarPending.Name = "btnBarPending";
+            this.btnBarPending.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnBarPending_ItemClick);
             // 
             // FrmClassDetail
             // 
@@ -407,5 +418,6 @@
         private DevExpress.XtraBars.BarButtonItem btnBarRemoveModule;
         private DevExpress.XtraBars.BarButtonItem btnBarAddParticipant;
         private DevExpress.XtraBars.BarButtonItem btnBarRemoveParticipant;
+        private DevExpress.XtraBars.BarButtonItem btnBarPending;
     }
 }

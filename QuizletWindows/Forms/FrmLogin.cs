@@ -41,7 +41,7 @@ namespace QuizletWindows.Forms
                 return;
             }
             UserViewModel user =  UserApi.Instance.FindAccount(txtGmail.Text.Trim(), txtPassword.Text.Trim());
-            if(user!=null&&user.UserId==123)
+            if(user!=null&&user.UserId==-123)
             {
                 Notification.ShowError("your account is being blocked. Please contact to admin");
             }

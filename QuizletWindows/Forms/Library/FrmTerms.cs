@@ -79,6 +79,16 @@ namespace QuizletWindows.Forms.Library
             terms = TerminologyApi.Instance.GetTermByLearningModuleId(ModuleId);
             termGridView.AutoGenerateColumns = false;
             termGridView.DataSource = terms;
+            if(terms.Count>0)
+            {
+                txtDisplayTerm.Text = terms[0].TermName;
+            }
+            else
+            {
+                txtDisplayTerm.Text = "";
+            }
+            imageDisplay.Image = System.Drawing.Image.FromStream(new System.Net.WebClient().OpenRead("https://firebasestorage.googleapis.com/v0/b/quizlet-c9cab.appspot.com/o/main%2FFlashCard.png?alt=media&token=9a3befe7-f2f5-4eb2-9f6d-69e5b831d52f"));
+            imageDisplay.Properties.SizeMode = DevExpress.XtraEditors.Controls.PictureSizeMode.Zoom;
         }
         private void InitialSetUp()
         {

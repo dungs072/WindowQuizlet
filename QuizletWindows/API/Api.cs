@@ -33,6 +33,7 @@ namespace QuizletWindows.API
         public static string ClassParticipantAdd { get { return ClassUrl + "/UserParticipant"; } }
         public static string ClassPendingParticipant { get { return ClassUrl + "/DetailPendingParticipant"; } }
         public static string ClassRegister { get { return ClassUrl + "/GlobalSearch"; } }
+        public static string ClassCanDeleteLearningModule { get { return ClassUrl + "/CheckDelete"; } }
 
         public static string ClassJoin { get { return ClassUrl + "/JoinClass"; } }
 

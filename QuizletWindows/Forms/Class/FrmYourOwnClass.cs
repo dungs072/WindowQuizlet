@@ -131,8 +131,16 @@ namespace QuizletWindows.Forms.Class
             if (result == DialogResult.OK)
             {
                 int classId = GetClassId();
-                await ClassApi.Instance.DeleteClass(classId);
-                Notification.ShowNotification("Delete this class successfully");
+                var state =  await ClassApi.Instance.DeleteClass(classId);
+                if(state)
+                {
+                    Notification.ShowNotification("Delete this class successfully");
+                }
+                else
+                {
+                    Notification.ShowError("Delete this class failed because there are some data link to it");
+                }
+                
                 FetchDataTable();
             }
         }

@@ -90,12 +90,31 @@ namespace QuizletWindows.API
         }
         public async Task<bool> DeleteLearningModule(int LearningModuleId)
         {
-            HttpResponseMessage response = await client.DeleteAsync(Api.LearningModuleUrl + $"/{LearningModuleId}");
-            if (response.StatusCode == HttpStatusCode.BadRequest)
+
+            var canDelete = await client.GetStringAsync(Api.ClassCanDeleteLearningModule + $"/{LearningModuleId}/{Program.UserId}");
+            //if(response.StatusCode== HttpStatusCode.BadRequest) 
+            //{
+            //    return "2";
+            //}
+            if (canDelete != "yes")
             {
                 return false;
             }
-            return true;
+            else
+            {
+                HttpResponseMessage response = await client.DeleteAsync(Api.LearningModuleUrl + $"/{LearningModuleId}");
+                if (response.StatusCode == HttpStatusCode.BadRequest)
+                {
+                    return false;
+                }
+                return true;
+            }
+            //HttpResponseMessage response = await client.DeleteAsync(Api.LearningModuleUrl + $"/{LearningModuleId}");
+            //if (response.StatusCode == HttpStatusCode.BadRequest)
+            //{
+            //    return false;
+            //}
+            //return true;
         }
 
         public async Task<bool> UpdateLearningModule(LearningModuleViewModel2 learningModuleViewModel)

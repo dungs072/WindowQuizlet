@@ -54,7 +54,7 @@ namespace QuizletWindows.API
         public async Task<bool> DeleteClass(int classId)
         {
             HttpResponseMessage response = await client.DeleteAsync(Api.ClassUrl + $"/{classId}");
-            if (response.StatusCode == HttpStatusCode.BadRequest)
+            if (response.StatusCode == HttpStatusCode.NoContent)
             {
                 return false;
             }
@@ -132,6 +132,25 @@ namespace QuizletWindows.API
         {
             return client.GetFromJsonAsync<List<ClassViewModel>>(Api.ClassJoin + $"/{userId}").Result;
         }
+        public List<Participant> GetDetailPendingParticipantClass(int classId)
+        {
+            return client.GetFromJsonAsync<List<Participant>>(Api.ClassPendingParticipant + $"/{classId}").Result;
+        }
+        public async Task<bool> UpdateRegisterDetail(RegisterDetailClass detail)
+        {
+            HttpResponseMessage response = await client.PutAsJsonAsync<RegisterDetailClass>(Api.ClassPendingParticipant, detail);
+            if (response.StatusCode == HttpStatusCode.BadRequest)
+            {
+                return false;
+            }
+            return true;
+        }
+        public async Task<RegisterDetailClass> GetDetailPendingParticipant(int classId, int userId)
+        {
+            return await client.GetFromJsonAsync<RegisterDetailClass>(Api.ClassPendingParticipant + $"/{classId}/{userId}");
+        }
+
+
 
     }
 }

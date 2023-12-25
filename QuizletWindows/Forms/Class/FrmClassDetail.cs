@@ -162,5 +162,12 @@ namespace QuizletWindows.Forms.Class
             
            
         }
+
+        private void btnBarPending_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            FrmPendingParticipant.classId = classId;
+            FrmPendingParticipant pending = new FrmPendingParticipant();
+            pending.ShowDialog();
+        }
     }
 }
